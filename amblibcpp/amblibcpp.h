@@ -2,9 +2,12 @@
 
 #pragma once
 
-using namespace System;
+
 
 namespace Ambiesoft {
+
+	using namespace System;
+
 	public enum class MOVEWINDOWTYPE
 	{
 		MOVEWINDOW_TOPLEFT,
@@ -13,11 +16,18 @@ namespace Ambiesoft {
 		MOVEWINDOW_BOTTOMRIGHT,
 	};
 
-	public ref class AmbLibCpp abstract sealed
-	{
+
+	public ref class CppUtils {
 	public:
+	static std::string getStdStringLoc(String^ s);
+	static std::string getStdStringLoc(String^ s, LPCSTR pLoc);
+	
+	static std::string getStdString(String^ s);
+	static std::wstring getStdWstring(String^ s);
+
 		static bool moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type);
-		
-		static String^ AmbLibCpp::humanReadableByteCount(System::UInt64 len) ;
+	static String^ humanReadableByteCount(System::UInt64 len) ;
+
 	};
+
 }

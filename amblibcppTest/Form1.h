@@ -70,7 +70,7 @@ namespace amblibcppTest {
 		}
 #pragma endregion
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-				 Ambiesoft::AmbLibCpp::moveWindowSpecific(this, Ambiesoft::MOVEWINDOWTYPE::MOVEWINDOW_BOTTOMLEFT);
+				 Ambiesoft::CppUtils::moveWindowSpecific(this, Ambiesoft::MOVEWINDOWTYPE::MOVEWINDOW_BOTTOMLEFT);
 			 }
 	};
 }

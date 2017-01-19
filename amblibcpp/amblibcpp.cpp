@@ -1,14 +1,92 @@
 
 
 #include "stdafx.h"
-
+#include <windows.h>
+#include <tchar.h>
+#include <vcclr.h>
 #include "amblibcpp.h"
 
 
 namespace Ambiesoft {
 
+	std::string CppUtils::getStdStringLoc(String^ s, LPCSTR pLoc)
+	{
+		char szLang[4];
+		if(!pLoc)
+		{
+			::GetLocaleInfoA(LOCALE_USER_DEFAULT ,
+					LOCALE_SABBREVLANGNAME,
+					szLang, 
+					4);
+			pLoc = szLang;
+		}
+		setlocale( LC_CTYPE, pLoc );
 
-	bool AmbLibCpp::moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type)
+		std::string ret;
+		if ( s == nullptr )
+			return ret;
+
+		pin_ptr<const wchar_t> p = PtrToStringChars(s);
+		size_t len = (s->Length+1) * sizeof(wchar_t);
+		char* pT = (char*)malloc(len);
+		size_t retutrnvalue;
+
+		if ( 0 != wcstombs_s( &retutrnvalue, 
+			pT,
+			len,
+			p,
+			len ) )
+		{
+			
+			free(pT);
+			return ret;
+		}
+		ret = pT;
+		free(pT);
+		return ret;
+	}
+	std::string CppUtils::getStdStringLoc(String^ s)
+	{
+		return getStdStringLoc(s, NULL);
+	}
+	std::string CppUtils::getStdString(String^ s)
+	{
+		std::string ret;
+		if ( s == nullptr )
+			return ret;
+
+		pin_ptr<const wchar_t> p = PtrToStringChars(s);
+		size_t len = (s->Length+1) * sizeof(wchar_t);
+		char* pT = (char*)malloc(len);
+		size_t retutrnvalue;
+
+		if ( 0 != wcstombs_s( &retutrnvalue, 
+			pT,
+			len,
+			p,
+			len ) )
+		{
+			free(pT);
+			return getStdStringLoc(s);
+		}
+		ret = pT;
+		free(pT);
+		return ret;
+	}
+
+
+	std::wstring CppUtils::getStdWstring(String^ s)
+	{
+		std::wstring ret;
+		if ( s == nullptr )
+			return ret;
+
+		pin_ptr<const wchar_t> p = PtrToStringChars(s);
+		ret = p;
+		return ret;
+	}
+
+	bool CppUtils::moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type)
 	{
 		if ( !f || !f->IsHandleCreated || f->IsDisposed )
 		{
@@ -46,7 +124,7 @@ namespace Ambiesoft {
 	}
 
 
-	String^ AmbLibCpp::humanReadableByteCount(System::UInt64 len) 
+	String^ CppUtils::humanReadableByteCount(System::UInt64 len) 
 	{
 		array<String^>^ sizes = { "B", "KB", "MB", "GB", "TB" };
 
