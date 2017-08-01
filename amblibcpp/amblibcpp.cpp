@@ -139,4 +139,7 @@ namespace Ambiesoft {
 		String^ result = String::Format("{0:0.##} {1}", len, sizes[order]);
 		return result;
 	}
+
+	void CppUtils::donothing()
+	{}
 }
