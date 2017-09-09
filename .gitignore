@@ -1,0 +1,16 @@
+
+# /
+/Debug
+/ship
+/*.ncb
+/*.suo
+
+# /amblibcpp/
+/amblibcpp/Debug
+/amblibcpp/ship
+/amblibcpp/*.user
+
+# /amblibcppTest/
+/amblibcppTest/Debug
+/amblibcppTest/ship
+/amblibcppTest/*.user
