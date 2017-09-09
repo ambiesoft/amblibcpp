@@ -14,3 +14,13 @@
 /amblibcppTest/Debug
 /amblibcppTest/ship
 /amblibcppTest/*.user
+
+Release/
+amblibcpp.2013.sdf
+amblibcpp/Release/
+amblibcppStub/bin/
+amblibcppStub/obj/
+amblibcppTest/Release/
+amblibcppTestCS/obj/
+ipch/
+

@@ -7,6 +7,7 @@ using namespace amblibcppTest;
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
 {
+	Ambiesoft::CppUtils::CopyFile(L"Y:\\T\\*.zip",L"Y:\\T\\aaa\\");
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false); 
 

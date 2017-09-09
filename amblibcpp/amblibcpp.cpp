@@ -6,6 +6,7 @@
 #include <vcclr.h>
 #include "amblibcpp.h"
 
+#include "../../lsMisc/SHMoveFile.h"
 
 namespace Ambiesoft {
 
@@ -138,6 +139,14 @@ namespace Ambiesoft {
 		// show a single decimal place, and no space.
 		String^ result = String::Format("{0:0.##} {1}", len, sizes[order]);
 		return result;
+	}
+
+	bool CppUtils::CopyFile(String^ src, String^ dest)
+	{
+		pin_ptr<const wchar_t> pSrc=PtrToStringChars(src);
+		pin_ptr<const wchar_t> pDest=PtrToStringChars(dest);
+
+		return 0==SHCopyOneFile(pDest, pSrc);
 	}
 
 	void CppUtils::donothing()

@@ -28,6 +28,7 @@ namespace Ambiesoft {
 		static bool moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type);
 		static String^ humanReadableByteCount(System::UInt64 len);
 
+		static bool CopyFile(String^ src, String^ dest);
 		static void donothing();
 	};
 

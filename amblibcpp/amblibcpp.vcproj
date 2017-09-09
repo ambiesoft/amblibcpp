@@ -42,6 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="../../lsMisc/stlsoft/include"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="2"
@@ -116,6 +117,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="../../lsMisc/stlsoft/include"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
@@ -189,6 +191,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="../../lsMisc/stlsoft/include"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
@@ -269,6 +272,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\lsMisc\SHMoveFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Stdafx.cpp"
 				>
 				<FileConfiguration
@@ -304,6 +311,10 @@
 			>
 			<File
 				RelativePath=".\amblibcpp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\lsMisc\SHMoveFile.h"
 				>
 			</File>
 			<File
