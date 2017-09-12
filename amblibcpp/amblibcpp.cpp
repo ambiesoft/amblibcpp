@@ -152,7 +152,7 @@ namespace Ambiesoft {
 
 		return 0==SHCopyFile(pDest, pSrc);
 	}
-	bool CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+	int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
 	{
 		if (!froms || !tos)
 			return false;
@@ -169,7 +169,9 @@ namespace Ambiesoft {
 		for each(String^ s in tos)
 			stdTos.push_back(toWstring(s));
 
-		return 0 == SHMoveFile(stdTos, stdFroms);
+		int ret;
+		SHMoveFile(stdTos, stdFroms, &ret);
+		return ret;
 	}
 	void CppUtils::donothing()
 	{}
