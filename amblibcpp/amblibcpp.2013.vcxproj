@@ -186,6 +186,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\lsMisc\cppclr\clrString.cpp" />
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp" />
     <ClCompile Include="amblibcpp.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -197,6 +198,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\lsMisc\cppclr\clrString.h" />
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h" />
     <ClInclude Include="amblibcpp.h" />
     <ClInclude Include="Stdafx.h" />

@@ -7,6 +7,10 @@
 #include "amblibcpp.h"
 
 #include "../../lsMisc/SHMoveFile.h"
+#include "../../lsMisc/cppclr/clrString.h"
+
+using std::vector;
+using std::wstring;
 
 namespace Ambiesoft {
 
@@ -146,9 +150,27 @@ namespace Ambiesoft {
 		pin_ptr<const wchar_t> pSrc=PtrToStringChars(src);
 		pin_ptr<const wchar_t> pDest=PtrToStringChars(dest);
 
-		return 0==SHCopyOneFile(pDest, pSrc);
+		return 0==SHCopyFile(pDest, pSrc);
 	}
+	bool CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+	{
+		if (!froms || !tos)
+			return false;
+		if (froms->Length == 0 || tos->Length == 0)
+			return false;
+		if (froms->Length != tos->Length)
+			return false;
 
+		vector<wstring> stdFroms;
+		vector<wstring> stdTos;
+
+		for each(String^ s in froms)
+			stdFroms.push_back(toWstring(s));
+		for each(String^ s in tos)
+			stdTos.push_back(toWstring(s));
+
+		return 0 == SHMoveFile(stdTos, stdFroms);
+	}
 	void CppUtils::donothing()
 	{}
 }

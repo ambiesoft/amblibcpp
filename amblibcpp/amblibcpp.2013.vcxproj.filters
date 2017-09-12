@@ -23,6 +23,9 @@
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\cppclr\clrString.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="amblibcpp.h">
@@ -32,6 +35,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\cppclr\clrString.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

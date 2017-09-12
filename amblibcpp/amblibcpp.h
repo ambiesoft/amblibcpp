@@ -29,6 +29,7 @@ namespace Ambiesoft {
 		static String^ humanReadableByteCount(System::UInt64 len);
 
 		static bool CopyFile(String^ src, String^ dest);
+		static bool MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
 		static void donothing();
 	};
 
