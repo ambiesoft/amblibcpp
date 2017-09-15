@@ -28,9 +28,14 @@ namespace Ambiesoft {
 		static bool moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type);
 		static String^ humanReadableByteCount(System::UInt64 len);
 
-		static bool CopyFile(String^ src, String^ dest);
+		static int CopyFile(String^ src, String^ dest);
+		static int DeleteFile(String^ file);
+
 		static int MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
-		static void donothing();
+		static int DeleteFiles(cli::array<String^>^ files);
+
+		static bool WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data);
+		static bool ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data);
 	};
 
 }

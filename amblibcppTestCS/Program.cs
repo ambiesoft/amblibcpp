@@ -28,7 +28,7 @@ namespace amblibcppTestCS
             System.AppDomain.CurrentDomain.AssemblyResolve += CustomResolve;
             Ambiesoft.AmblibCppStub.init();
 
-            Ambiesoft.CppUtils.donothing();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

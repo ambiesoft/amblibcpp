@@ -4,6 +4,9 @@
 #include <windows.h>
 #include <tchar.h>
 #include <vcclr.h>
+
+#include <stlsoft/smartptr/scoped_handle.hpp>
+
 #include "amblibcpp.h"
 
 #include "../../lsMisc/SHMoveFile.h"
@@ -145,13 +148,19 @@ namespace Ambiesoft {
 		return result;
 	}
 
-	bool CppUtils::CopyFile(String^ src, String^ dest)
+	int CppUtils::CopyFile(String^ src, String^ dest)
 	{
 		pin_ptr<const wchar_t> pSrc=PtrToStringChars(src);
 		pin_ptr<const wchar_t> pDest=PtrToStringChars(dest);
 
-		return 0==SHCopyFile(pDest, pSrc);
+		return SHCopyFile(pDest, pSrc);
 	}
+	int CppUtils::DeleteFile(String^ file)
+	{
+		pin_ptr<const wchar_t> pSrc = PtrToStringChars(file);
+		return SHDeleteFile(pSrc);
+	}
+
 	int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
 	{
 		if (!froms || !tos)
@@ -173,6 +182,79 @@ namespace Ambiesoft {
 		SHMoveFile(stdTos, stdFroms, &ret);
 		return ret;
 	}
-	void CppUtils::donothing()
-	{}
+	int CppUtils::DeleteFiles(cli::array<String^>^ files)
+	{
+		vector<wstring> stdfiles;
+		for each(String^ s in files)
+			stdfiles.push_back(toWstring(s));
+
+		int ret;
+		SHDeleteFile(stdfiles, &ret);
+		return ret;
+	}
+	bool CppUtils::WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data)
+	{
+		if (data->Length <= 0)
+			return true;
+
+		wstring stdfile = toWstring(filename);
+		stdfile += L":" + toWstring(alterpath);
+		pin_ptr<unsigned char > pData = &data[0];
+
+		HANDLE hFile = CreateFile(stdfile.c_str(),
+			GENERIC_WRITE,
+			FILE_SHARE_WRITE,
+			NULL,
+			OPEN_ALWAYS,
+			0,
+			NULL);
+		if (hFile == INVALID_HANDLE_VALUE)
+			return false;
+
+		stlsoft::scoped_handle<HANDLE> freer(hFile, CloseHandle);
+
+		DWORD dwWritten = 0;
+		if (!WriteFile(hFile, pData, data->Length, &dwWritten, NULL))
+			return false;
+		if (dwWritten != data->Length)
+			return false;
+
+		return true;
+	}
+	bool CppUtils::ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data)
+	{
+		wstring stdfile = toWstring(filename);
+		stdfile += L":" + toWstring(alterpath);
+
+
+		HANDLE hFile = CreateFile(stdfile.c_str(),
+			GENERIC_READ,
+			FILE_SHARE_READ,
+			NULL,
+			OPEN_ALWAYS,
+			0,
+			NULL);
+		if (hFile == INVALID_HANDLE_VALUE)
+			return false;
+
+		stlsoft::scoped_handle<HANDLE> freer(hFile, CloseHandle);
+
+		DWORD dwWritten = 0;
+		vector<unsigned char> all;
+		unsigned char buff[128];
+		DWORD dwRead = 0;
+		for (;;)
+		{
+			if (!ReadFile(hFile, buff, sizeof(buff), &dwRead, NULL))
+				return false;
+			if (dwRead == 0)
+				break;
+			all.insert(all.end(), &buff[0], &buff[dwRead]);
+		}
+		data = gcnew array<unsigned char>(all.size());
+		pin_ptr<unsigned char> pData = &data[0];
+		memcpy(pData, &all[0], all.size());
+		return true;
+	}
+
 }
