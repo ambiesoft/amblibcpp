@@ -2,6 +2,9 @@
 
 #include "stdafx.h"
 #include <windows.h>
+#include <Shlwapi.h>
+#pragma comment(lib, "shlwapi.lib")
+
 #include <tchar.h>
 #include <vcclr.h>
 
@@ -14,6 +17,7 @@
 
 using std::vector;
 using std::wstring;
+using namespace System::IO;
 
 namespace Ambiesoft {
 
@@ -223,6 +227,9 @@ namespace Ambiesoft {
 	}
 	bool CppUtils::ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data)
 	{
+		if (!File::Exists(filename))
+			return false;
+
 		wstring stdfile = toWstring(filename);
 		stdfile += L":" + toWstring(alterpath);
 
@@ -252,8 +259,11 @@ namespace Ambiesoft {
 			all.insert(all.end(), &buff[0], &buff[dwRead]);
 		}
 		data = gcnew array<unsigned char>(all.size());
-		pin_ptr<unsigned char> pData = &data[0];
-		memcpy(pData, &all[0], all.size());
+		if (!all.empty())
+		{
+			pin_ptr<unsigned char> pData = &data[0];
+			memcpy(pData, &all[0], all.size());
+		}
 		return true;
 	}
 

@@ -7,6 +7,14 @@ using namespace amblibcppTest;
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
 {
+	{
+		array<unsigned char>^ zaa;
+		if (Ambiesoft::CppUtils::ReadAlternate(L"C:\\T\\magic", L"alt", zaa))
+		{
+			String^ ttt = System::Text::Encoding::UTF8->GetString(zaa);
+		}
+
+	}
 	String^ aaa = "aaa";
 	array<unsigned char>^ baaa = System::Text::Encoding::UTF8->GetBytes(aaa);
 
