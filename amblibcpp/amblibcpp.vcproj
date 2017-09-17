@@ -272,6 +272,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\lsMisc\cppclr\clrString.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\lsMisc\SHMoveFile.cpp"
 				>
 			</File>
@@ -311,6 +315,10 @@
 			>
 			<File
 				RelativePath=".\amblibcpp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\lsMisc\cppclr\clrString.h"
 				>
 			</File>
 			<File
