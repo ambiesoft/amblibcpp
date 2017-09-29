@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "amblibcpp", "amblibcpp\amblibcpp.2013.vcxproj", "{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmbLibcpp", "amblibcpp\amblibcpp.2013.vcxproj", "{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "amblibcppTest", "amblibcppTest\amblibcppTest.2013.vcxproj", "{7CFC8D65-9252-4C04-9337-545EB49A5B2D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmbLibcppTest", "amblibcppTest\amblibcppTest.2013.vcxproj", "{7CFC8D65-9252-4C04-9337-545EB49A5B2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amblibcppTestCS", "amblibcppTestCS\amblibcppTestCS.csproj", "{777B449C-6C87-468B-AAC1-D3830A2A854B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbLibcppTestCS", "amblibcppTestCS\AmbLibcppTestCS.csproj", "{777B449C-6C87-468B-AAC1-D3830A2A854B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amblibcppStub", "amblibcppStub\amblibcppStub.csproj", "{A0BC7144-D87F-4F67-9DD0-D4F0136C4A87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbLibcppStub", "amblibcppStub\AmbLibcppStub.csproj", "{A0BC7144-D87F-4F67-9DD0-D4F0136C4A87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

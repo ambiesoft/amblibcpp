@@ -22,7 +22,7 @@
     <ProjectGuid>{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}</ProjectGuid>
     <RootNamespace>Ambiesoft</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
-    <ProjectName>amblibcpp</ProjectName>
+    <ProjectName>AmbLibcpp</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -187,8 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lsMisc\cppclr\clrString.cpp" />
+    <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp" />
-    <ClCompile Include="amblibcpp.cpp" />
+    <ClCompile Include="AmbLibcpp.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -199,8 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lsMisc\cppclr\clrString.h" />
+    <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h" />
-    <ClInclude Include="amblibcpp.h" />
+    <ClInclude Include="AmbLibcpp.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <ItemGroup>

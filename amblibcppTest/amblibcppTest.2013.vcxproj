@@ -22,7 +22,7 @@
     <ProjectGuid>{7CFC8D65-9252-4C04-9337-545EB49A5B2D}</ProjectGuid>
     <RootNamespace>amblibcppTest</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
-    <ProjectName>amblibcppTest</ProjectName>
+    <ProjectName>AmbLibcppTest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

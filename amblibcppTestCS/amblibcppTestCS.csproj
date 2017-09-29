@@ -97,13 +97,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\amblibcppStub\amblibcppStub.csproj">
+    <ProjectReference Include="..\amblibcppStub\AmbLibcppStub.csproj">
       <Project>{a0bc7144-d87f-4f67-9dd0-d4f0136c4a87}</Project>
-      <Name>amblibcppStub</Name>
+      <Name>AmbLibcppStub</Name>
     </ProjectReference>
     <ProjectReference Include="..\amblibcpp\amblibcpp.2013.vcxproj">
       <Project>{87f0ce21-9ca6-448a-ace8-b7fc9771dc87}</Project>
-      <Name>amblibcpp</Name>
+      <Name>AmbLibcpp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
