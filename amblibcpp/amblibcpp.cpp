@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <Shlwapi.h>
 #pragma comment(lib, "shlwapi.lib")
+#pragma comment( lib, "urlmon" )
+#pragma comment( lib, "Ole32" )
 
 #include <tchar.h>
 #include <vcclr.h>
@@ -267,4 +269,35 @@ namespace Ambiesoft {
 		return true;
 	}
 
+	// https://stackoverflow.com/a/20647203
+	String^ CppUtils::getMimeTypeFromExtention(String^ ext)
+	{
+		if (String::IsNullOrEmpty(ext))
+			return String::Empty;
+		if (ext[0] != '.')
+			ext = "." + ext;
+
+		pin_ptr<const wchar_t> str = PtrToStringChars(ext);
+
+		LPWSTR pwzMimeOut = NULL;
+		HRESULT hr = FindMimeFromData(
+			NULL, 
+			str,
+			NULL,
+			0,
+			NULL,
+			FMFD_URLASFILENAME, 
+			&pwzMimeOut, 
+			0x0);
+		if (SUCCEEDED(hr)) 
+		{
+			String^ ret = gcnew String(pwzMimeOut);
+			// Despite the documentation stating to call operator delete, the
+			// returned string must be cleaned up using CoTaskMemFree
+			CoTaskMemFree(pwzMimeOut);
+			return ret;
+		}
+
+		return String::Empty;
+	}
 }

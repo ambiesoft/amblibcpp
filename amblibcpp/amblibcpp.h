@@ -36,6 +36,8 @@ namespace Ambiesoft {
 
 		static bool WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data);
 		static bool ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data);
+
+		static String^ getMimeTypeFromExtention(String^ ext);
 	};
 
 }

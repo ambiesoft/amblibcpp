@@ -7,6 +7,9 @@ using namespace amblibcppTest;
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
 {
+	String^ mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".txt");
+	mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".ini");
+	mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".cpp");
 	{
 		array<unsigned char>^ zaa;
 		if (Ambiesoft::CppUtils::ReadAlternate(L"C:\\T\\magic", L"alt", zaa))
