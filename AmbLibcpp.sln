@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "amblibcpp", "amblibcpp\amblibcpp.vcproj", "{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "amblibcppTest", "amblibcppTest\amblibcppTest.vcproj", "{7CFC8D65-9252-4C04-9337-545EB49A5B2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		ship|Win32 = ship|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.Debug|Win32.Build.0 = Debug|Win32
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.Release|Win32.ActiveCfg = Release|Win32
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.Release|Win32.Build.0 = Release|Win32
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.ship|Win32.ActiveCfg = ship|Win32
+		{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}.ship|Win32.Build.0 = ship|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Debug|Win32.Build.0 = Debug|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Release|Win32.ActiveCfg = Release|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Release|Win32.Build.0 = Release|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.ship|Win32.ActiveCfg = ship|Win32
+		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.ship|Win32.Build.0 = ship|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
