@@ -9,15 +9,24 @@ namespace amblibcppTestCS
     static class Program
     {
 
-
         private static System.Reflection.Assembly CustomResolve(
-             object sender,
-             System.ResolveEventArgs args)
+            object sender,
+            System.ResolveEventArgs args)
         {
-            Ambiesoft.AmblibCppStub.init();
+            if (args.Name.StartsWith("library"))
+            {
+                string fileName = System.IO.Path.GetFullPath(
+                    "platform\\"
+                    + System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE")
+                    + "\\library.dll");
+                System.Console.WriteLine(fileName);
+                if (System.IO.File.Exists(fileName))
+                {
+                    return System.Reflection.Assembly.LoadFile(fileName);
+                }
+            }
             return null;
         }
-
 
         /// <summary>
         /// The main entry point for the application.
@@ -26,8 +35,6 @@ namespace amblibcppTestCS
         static void Main()
         {
             System.AppDomain.CurrentDomain.AssemblyResolve += CustomResolve;
-            Ambiesoft.AmblibCppStub.init();
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
