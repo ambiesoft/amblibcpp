@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="amblibcppTest"
+	Name="AmbLibcppTest"
 	ProjectGUID="{7CFC8D65-9252-4C04-9337-545EB49A5B2D}"
-	RootNamespace="amblibcppTest"
+	RootNamespace="AmbLibcppTest"
 	Keyword="ManagedCProj"
 	TargetFrameworkVersion="131072"
 	>
@@ -277,7 +277,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\amblibcppTest.cpp"
+				RelativePath=".\AmbLibcppTest.cpp"
 				>
 			</File>
 			<File

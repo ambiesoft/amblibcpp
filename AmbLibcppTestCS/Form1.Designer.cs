@@ -1,4 +1,4 @@
-﻿namespace amblibcppTestCS
+﻿namespace AmbLibcppTestCS
 {
     partial class Form1
     {

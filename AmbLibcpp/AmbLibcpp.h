@@ -1,4 +1,4 @@
-// amblibcpp.h
+// AmbLibcpp.h
 
 #pragma once
 

@@ -14,7 +14,7 @@
 
 #include <stlsoft/smartptr/scoped_handle.hpp>
 
-#include "amblibcpp.h"
+#include "AmbLibcpp.h"
 
 #include "../../lsMisc/SHMoveFile.h"
 #include "../../lsMisc/cppclr/clrString.h"

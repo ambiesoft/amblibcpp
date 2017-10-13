@@ -6,11 +6,11 @@ using namespace System::Runtime::CompilerServices;
 using namespace System::Runtime::InteropServices;
 using namespace System::Security::Permissions;
 
-[assembly:AssemblyTitleAttribute("amblibcppTest")];
+[assembly:AssemblyTitleAttribute("AmbLibcppTest")];
 [assembly:AssemblyDescriptionAttribute("")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("")];
-[assembly:AssemblyProductAttribute("amblibcppTest")];
+[assembly:AssemblyProductAttribute("AmbLibcppTest")];
 [assembly:AssemblyCopyrightAttribute("Copyright (c)  2012")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];

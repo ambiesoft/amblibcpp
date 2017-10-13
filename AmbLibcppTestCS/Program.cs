@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Ambiesoft;
 using System.IO;
 
-namespace amblibcppTestCS
+namespace AmbLibcppTestCS
 {
     static class Program
     {

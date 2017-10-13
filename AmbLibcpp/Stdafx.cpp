@@ -1,4 +1,4 @@
-// stdafx.cpp : 標準インクルード amblibcpp.pch のみを
+// stdafx.cpp : 標準インクルード AmbLibcpp.pch のみを
 // 含むソース ファイルは、プリコンパイル済みヘッダーになります。
 // stdafx.obj にはプリコンパイル済み型情報が含まれます。
 

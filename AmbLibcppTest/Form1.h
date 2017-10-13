@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-namespace amblibcppTest {
+namespace AmbLibcppTest {
 
 	using namespace System;
 	using namespace System::ComponentModel;

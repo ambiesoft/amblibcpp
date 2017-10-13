@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7CFC8D65-9252-4C04-9337-545EB49A5B2D}</ProjectGuid>
-    <RootNamespace>amblibcppTest</RootNamespace>
+    <RootNamespace>AmbLibcppTest</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
     <ProjectName>AmbLibcppTest</ProjectName>
   </PropertyGroup>
@@ -187,7 +187,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="amblibcppTest.cpp" />
+    <ClCompile Include="AmbLibcppTest.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -219,7 +219,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\amblibcpp\amblibcpp.2013.vcxproj">
+    <ProjectReference Include="..\AmbLibcpp\AmbLibcpp.2013.vcxproj">
       <Project>{87f0ce21-9ca6-448a-ace8-b7fc9771dc87}</Project>
     </ProjectReference>
   </ItemGroup>

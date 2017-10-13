@@ -7,8 +7,8 @@
     <ProjectGuid>{A0BC7144-D87F-4F67-9DD0-D4F0136C4A87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>amblibcppStub</RootNamespace>
-    <AssemblyName>amblibcppStub</AssemblyName>
+    <RootNamespace>AmbLibcppStub</RootNamespace>
+    <AssemblyName>AmbLibcppStub</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

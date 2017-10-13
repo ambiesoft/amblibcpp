@@ -5,26 +5,26 @@
 /*.ncb
 /*.suo
 
-# /amblibcpp/
-/amblibcpp/Debug
-/amblibcpp/ship
-/amblibcpp/*.user
+# /AmbLibcpp/
+/AmbLibcpp/Debug
+/AmbLibcpp/ship
+/AmbLibcpp/*.user
 
-# /amblibcppTest/
-/amblibcppTest/Debug
-/amblibcppTest/ship
-/amblibcppTest/*.user
+# /AmbLibcppTest/
+/AmbLibcppTest/Debug
+/AmbLibcppTest/ship
+/AmbLibcppTest/*.user
 
 
 
 Release/
-amblibcpp.2013.sdf
-amblibcpp/Release/
-amblibcppStub/bin/
-amblibcppStub/obj/
-amblibcppTest/Release/
-amblibcppTestCS/obj/
-amblibcppTestCS/bin/
+AmbLibcpp.2013.sdf
+AmbLibcpp/Release/
+AmbLibcppStub/bin/
+AmbLibcppStub/obj/
+AmbLibcppTest/Release/
+AmbLibcppTestCS/obj/
+AmbLibcppTestCS/bin/
 ipch/
 
 AmbLibcpp/x64/

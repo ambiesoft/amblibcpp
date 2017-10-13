@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="amblibcppTest.cpp">
+    <ClCompile Include="AmbLibcppTest.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">

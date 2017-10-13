@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Form1.h"
 
-using namespace amblibcppTest;
+using namespace AmbLibcppTest;
 
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
