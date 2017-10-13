@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="Ambiesoft.AmbLibcpp.x86">
       <HintPath>..\..\..\..\..\..\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.x86.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,6 +82,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(TargetDir)platform"
+copy "C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.x86.*" "$(TargetDir)platform"
+copy "C:\Linkout\DNAssembly.NET4\Ambiesoft.AmbLibcpp.x64.*" "$(TargetDir)platform"
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
