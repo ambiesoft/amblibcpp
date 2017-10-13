@@ -10,6 +10,8 @@
 #include <tchar.h>
 #include <vcclr.h>
 
+#pragma comment(lib, "user32.lib")
+
 #include <stlsoft/smartptr/scoped_handle.hpp>
 
 #include "amblibcpp.h"
@@ -299,5 +301,11 @@ namespace Ambiesoft {
 		}
 
 		return String::Empty;
+	}
+
+	void CppUtils::testMessageBox(String^ message)
+	{
+		pin_ptr<const wchar_t> pMessage = PtrToStringChars(message);
+		MessageBox(NULL, pMessage, L"Title", MB_OK);
 	}
 }

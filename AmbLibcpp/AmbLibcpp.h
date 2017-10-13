@@ -38,6 +38,8 @@ namespace Ambiesoft {
 		static bool ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data);
 
 		static String^ getMimeTypeFromExtention(String^ ext);
+
+		static void testMessageBox(String^ message);
 	};
 
 }

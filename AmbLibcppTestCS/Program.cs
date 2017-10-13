@@ -4,16 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Ambiesoft;
+
 namespace amblibcppTestCS
 {
     static class Program
     {
-
         private static System.Reflection.Assembly CustomResolve(
             object sender,
             System.ResolveEventArgs args)
         {
-            if (args.Name.StartsWith("library"))
+            if (args.Name.StartsWith("Ambiesoft.AmbLibcpp"))
             {
                 string fileName = System.IO.Path.GetFullPath(
                     "platform\\"
@@ -35,6 +36,8 @@ namespace amblibcppTestCS
         static void Main()
         {
             System.AppDomain.CurrentDomain.AssemblyResolve += CustomResolve;
+
+            CppUtils.testMessageBox("AAA");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
