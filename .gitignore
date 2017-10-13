@@ -27,3 +27,7 @@ amblibcppTestCS/obj/
 amblibcppTestCS/bin/
 ipch/
 
+AmbLibcpp/x64/
+AmbLibcppTest/x64/
+x64/
+
