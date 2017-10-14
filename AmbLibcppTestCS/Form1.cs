@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Ambiesoft;
 namespace AmbLibcppTestCS
 {
     public partial class Form1 : Form
@@ -15,6 +15,20 @@ namespace AmbLibcppTestCS
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnNull_Click(object sender, EventArgs e)
+        {
+            CppUtils.CenteredMessageBox("AAA", ProductName);
+        }
+
+        private void btnPractical_Click(object sender, EventArgs e)
+        {
+            CppUtils.CenteredMessageBox("Are you sure to center the Messagebox?",
+                ProductName,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button2);
         }
     }
 }

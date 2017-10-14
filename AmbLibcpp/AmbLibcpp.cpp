@@ -1,23 +1,29 @@
-
+//Copyright (C) 2017 Ambiesoft All rights reserved.
+//
+//Redistribution and use in source and binary forms, with or without
+//modification, are permitted provided that the following conditions
+//are met:
+//1. Redistributions of source code must retain the above copyright
+//notice, this list of conditions and the following disclaimer.
+//2. Redistributions in binary form must reproduce the above copyright
+//notice, this list of conditions and the following disclaimer in the
+//documentation and/or other materials provided with the distribution.
+//
+//THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+//ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+//ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+//FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+//DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+//OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+//LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+//OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+//SUCH DAMAGE.
 
 #include "stdafx.h"
-#include <windows.h>
-#include <Shlwapi.h>
-#pragma comment(lib, "shlwapi.lib")
-#pragma comment( lib, "urlmon" )
-#pragma comment( lib, "Ole32" )
-
-#include <tchar.h>
-#include <vcclr.h>
-
-#pragma comment(lib, "user32.lib")
-
-#include <stlsoft/smartptr/scoped_handle.hpp>
 
 #include "AmbLibcpp.h"
-
-#include "../../lsMisc/SHMoveFile.h"
-#include "../../lsMisc/cppclr/clrString.h"
 
 using std::vector;
 using std::wstring;
@@ -102,7 +108,7 @@ namespace Ambiesoft {
 		return ret;
 	}
 
-	bool CppUtils::moveWindowSpecific(System::Windows::Forms::Form^ f, MOVEWINDOWTYPE type)
+	bool CppUtils::moveWindowSpecific(System::Windows::Forms::Form^ f, CPPUTIL_MOVEWINDOWTYPE type)
 	{
 		if ( !f || !f->IsHandleCreated || f->IsDisposed )
 		{
@@ -114,18 +120,18 @@ namespace Ambiesoft {
 		System::Drawing::Point targetPos;
 		switch(type)
 		{
-		case MOVEWINDOWTYPE::MOVEWINDOW_TOPLEFT:
+		case CPPUTIL_MOVEWINDOWTYPE::TOPLEFT:
 			targetPos = screenRect.Location;
 			break;
-		case MOVEWINDOWTYPE::MOVEWINDOW_TOPRIGHT:
+		case CPPUTIL_MOVEWINDOWTYPE::TOPRIGHT:
 			targetPos.X = screenRect.Right - curSize.Width;
 			targetPos.Y = screenRect.Location.Y;
 			break;
-		case MOVEWINDOWTYPE::MOVEWINDOW_BOTTOMLEFT:
+		case CPPUTIL_MOVEWINDOWTYPE::BOTTOMLEFT:
 			targetPos.X = screenRect.Location.X;
 			targetPos.Y = screenRect.Bottom - curSize.Height;
 			break;
-		case MOVEWINDOWTYPE::MOVEWINDOW_BOTTOMRIGHT:
+		case CPPUTIL_MOVEWINDOWTYPE::BOTTOMRIGHT:
 			targetPos.X = screenRect.Right - curSize.Width;
 			targetPos.Y = screenRect.Bottom - curSize.Height;
 			break;
@@ -262,7 +268,7 @@ namespace Ambiesoft {
 				break;
 			all.insert(all.end(), &buff[0], &buff[dwRead]);
 		}
-		data = gcnew array<unsigned char>(all.size());
+		data = gcnew array<unsigned char>((int)all.size());
 		if (!all.empty())
 		{
 			pin_ptr<unsigned char> pData = &data[0];
@@ -308,4 +314,132 @@ namespace Ambiesoft {
 		pin_ptr<const wchar_t> pMessage = PtrToStringChars(message);
 		MessageBox(NULL, pMessage, L"Title", MB_OK);
 	}
+
+	static HHOOK ghCMB;
+	static HWND ghOwner;
+	static LRESULT CALLBACK cmbCBTProc(
+		_In_ int    nCode,
+		_In_ WPARAM wParam,
+		_In_ LPARAM lParam
+		)
+	{
+		if (nCode < 0)
+			return CallNextHookEx(ghCMB, nCode, wParam, lParam);
+
+		switch (nCode)
+		{
+			case HCBT_CREATEWND:
+			{
+				HWND hWnd = (HWND)wParam;
+				CBT_CREATEWND* pCW = (CBT_CREATEWND*)lParam;
+
+				TCHAR szClass[256]; szClass[0] = 0;
+				GetClassName(hWnd, szClass, _countof(szClass));
+				if (lstrcmpi(szClass, L"#32770") == 0)
+				{
+					RECT rThis;
+					rThis.left = pCW->lpcs->x;
+					rThis.top = pCW->lpcs->y;
+					rThis.right = pCW->lpcs->x + pCW->lpcs->cx;
+					rThis.bottom = pCW->lpcs->y + pCW->lpcs->cy;
+					
+					HWND hParent = ghOwner;
+					if (hParent == NULL)
+						hParent = pCW->lpcs->hwndParent;
+					if (hParent == NULL)
+						hParent = GetDesktopWindow();
+
+					RECT rParent;
+					if (!GetWindowRect(hParent, &rParent))
+						break;
+
+					int xNew, yNew;
+					CenterRect(rThis, rParent, xNew, yNew);
+
+					pCW->lpcs->x = xNew;
+					pCW->lpcs->y = yNew;
+				}
+			}
+			break;
+		}
+		return CallNextHookEx(ghCMB, nCode, wParam, lParam);
+	}
+
+	// https://stackoverflow.com/a/6924332
+	static HMODULE cmbGetModuleHandle()
+	{
+		HMODULE hm = NULL;
+
+		if (!GetModuleHandleEx(
+			GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+			(LPCWSTR)&cmbGetModuleHandle,
+			&hm))
+		{
+			DASSERT(false);
+			return NULL;
+		}
+		return hm;
+	}
+
+	// TODO: Not thread safe
+	System::Windows::Forms::DialogResult CppUtils::CenteredMessageBox(
+		System::Windows::Forms::IWin32Window^ owner,
+		String^ text,
+		String^ caption,
+		System::Windows::Forms::MessageBoxButtons buttons,
+		System::Windows::Forms::MessageBoxIcon icon,
+		System::Windows::Forms::MessageBoxDefaultButton defaultButton)
+	{
+		if (!CheckThread::IsMainThread)
+		{
+			return System::Windows::Forms::MessageBox::Show(
+				owner,
+				text,
+				caption,
+				buttons,
+				icon,
+				defaultButton);
+		}
+
+		DASSERT(!ghOwner);
+		ghOwner = owner ? (HWND)owner->Handle.ToPointer() : nullptr;
+		DASSERT(!ghCMB);
+		ghCMB = SetWindowsHookEx(WH_CBT, cmbCBTProc, cmbGetModuleHandle(), GetCurrentThreadId());
+		DASSERT(ghCMB);
+		System::Windows::Forms::DialogResult ret = System::Windows::Forms::MessageBox::Show(
+			owner,
+			text,
+			caption,
+			buttons,
+			icon,
+			defaultButton);
+		DVERIFY(UnhookWindowsHookEx(ghCMB));
+		ghCMB = NULL;
+		ghOwner = NULL;
+		return ret;
+	}
+
+
+	CenteringDialog::CenteringDialog(System::Windows::Forms::IWin32Window^ owner)
+	{
+		if (!CheckThread::IsMainThread)
+			return;
+
+		DASSERT(!ghOwner);
+		ghOwner = owner ? (HWND)owner->Handle.ToPointer() : nullptr;
+		DASSERT(!ghCMB);
+		ghCMB = SetWindowsHookEx(WH_CBT, cmbCBTProc, cmbGetModuleHandle(), GetCurrentThreadId());
+		DASSERT(ghCMB);
+	}
+	CenteringDialog::~CenteringDialog()
+	{
+		if (!CheckThread::IsMainThread)
+			return;
+
+		ghOwner = nullptr;
+		DASSERT(ghCMB);
+		DVERIFY(UnhookWindowsHookEx(ghCMB));
+		ghCMB = NULL;
+	}
+
 }

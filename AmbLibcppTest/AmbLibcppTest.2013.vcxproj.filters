@@ -24,6 +24,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\browseFolder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Form1.h">
@@ -33,6 +36,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\browseFolder.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
