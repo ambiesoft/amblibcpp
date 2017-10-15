@@ -18,24 +18,39 @@ namespace Ambiesoft
     {
         static Loader()
         {
-            string[] resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            string resourceDir = string.Format("{0}.{1}.{2}.",
-                typeof(CppUtils).Namespace,
-                "Natives",
-                Environment.Is64BitProcess ? "x64" : "x86");
-            foreach (string native in resourceNames)
-            {
-                if (!native.StartsWith(resourceDir))
-                    continue;
+            //string[] resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            //string resourceDir = string.Format("{0}.{1}.{2}.",
+            //    typeof(CppUtils).Namespace,
+            //    "Natives",
+            //    Environment.Is64BitProcess ? "x64" : "x86");
+            //foreach (string native in resourceNames)
+            //{
+            //    if (!native.StartsWith(resourceDir))
+            //        continue;
 
-                string filename = native.Substring(resourceDir.Length);
-                EmbeddedAssembly.Load(native, filename);
-            }
+            //    string filename = native.Substring(resourceDir.Length);
+            //    EmbeddedAssembly.Load(native, filename);
+            //}
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
         }
         static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            return EmbeddedAssembly.Get(args.Name);
+            //Ambiesoft.Natives.x64.Ambiesoft.AmbLibcpp.platform.x64.dll
+            string name = args.Name.Split(',')[0];
+            if (name.StartsWith("Ambiesoft.AmbLibcpp.platform"))
+            {
+                string filename = string.Format("Ambiesoft.AmbLibcpp.platform.{0}.dll",
+                    Environment.Is64BitProcess ? "x64" : "x86");
+
+                string embeddedPath = string.Format("{0}.{1}.{2}.{3}",
+                    typeof(CppUtils).Namespace,
+                    "Natives",
+                    Environment.Is64BitProcess ? "x64" : "x86",
+                    filename);
+
+                return EmbeddedAssembly.Load(embeddedPath, filename);
+            }
+            return null;
         }
 
         static bool prepared_ = false;

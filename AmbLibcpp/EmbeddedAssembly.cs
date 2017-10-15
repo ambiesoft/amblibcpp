@@ -19,7 +19,7 @@ public class EmbeddedAssembly
     /// </summary>
     /// <param name="embeddedResource">Embedded Resource string. Example: WindowsFormsApplication1.SomeTools.dll</param>
     /// <param name="fileName">File Name. Example: SomeTools.dll</param>
-    public static void Load(string embeddedResource, string fileName)
+    public static Assembly Load(string embeddedResource, string fileName)
     {
         if (dic == null)
             dic = new Dictionary<string, Assembly>();
@@ -43,7 +43,7 @@ public class EmbeddedAssembly
 
                 // Add the assembly/dll into dictionary
                 dic.Add(asm.FullName, asm);
-                return;
+                return asm; ;
             }
             catch
             {
@@ -101,6 +101,7 @@ public class EmbeddedAssembly
 
         // Add the loaded DLL/assembly into dictionary
         dic.Add(asm.FullName, asm);
+        return asm;
     }
 
     /// <summary>
