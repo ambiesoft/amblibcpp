@@ -49,7 +49,10 @@ namespace AmbLibcppTest {
 	private: System::Windows::Forms::Button^  btnFolderNormal;
 	private: System::Windows::Forms::Button^  btnFolderCentering;
 	private: System::Windows::Forms::Button^  btnlsMiscFolder;
-	private: System::Windows::Forms::Button^  btnColor;
+	private: System::Windows::Forms::Button^  btnColorCentering;
+
+	private: System::Windows::Forms::Button^  btnOtherTest;
+	private: System::Windows::Forms::Button^  btnColorNormal;
 
 
 	private:
@@ -71,7 +74,9 @@ namespace AmbLibcppTest {
 			this->btnFolderNormal = (gcnew System::Windows::Forms::Button());
 			this->btnFolderCentering = (gcnew System::Windows::Forms::Button());
 			this->btnlsMiscFolder = (gcnew System::Windows::Forms::Button());
-			this->btnColor = (gcnew System::Windows::Forms::Button());
+			this->btnColorCentering = (gcnew System::Windows::Forms::Button());
+			this->btnOtherTest = (gcnew System::Windows::Forms::Button());
+			this->btnColorNormal = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnWithNullptr
@@ -134,22 +139,44 @@ namespace AmbLibcppTest {
 			this->btnlsMiscFolder->UseVisualStyleBackColor = true;
 			this->btnlsMiscFolder->Click += gcnew System::EventHandler(this, &Form1::btnlsMiscFolder_Click);
 			// 
-			// btnColor
+			// btnColorCentering
 			// 
-			this->btnColor->Location = System::Drawing::Point(91, 94);
-			this->btnColor->Name = L"btnColor";
-			this->btnColor->Size = System::Drawing::Size(123, 23);
-			this->btnColor->TabIndex = 6;
-			this->btnColor->Text = L"&color";
-			this->btnColor->UseVisualStyleBackColor = true;
-			this->btnColor->Click += gcnew System::EventHandler(this, &Form1::btnColor_Click);
+			this->btnColorCentering->Location = System::Drawing::Point(91, 123);
+			this->btnColorCentering->Name = L"btnColorCentering";
+			this->btnColorCentering->Size = System::Drawing::Size(123, 23);
+			this->btnColorCentering->TabIndex = 6;
+			this->btnColorCentering->Text = L"&color Centering";
+			this->btnColorCentering->UseVisualStyleBackColor = true;
+			this->btnColorCentering->Click += gcnew System::EventHandler(this, &Form1::btnColorCentering_Click);
+			// 
+			// btnOtherTest
+			// 
+			this->btnOtherTest->Location = System::Drawing::Point(0, 197);
+			this->btnOtherTest->Name = L"btnOtherTest";
+			this->btnOtherTest->Size = System::Drawing::Size(75, 23);
+			this->btnOtherTest->TabIndex = 7;
+			this->btnOtherTest->Text = L"&OtherTest";
+			this->btnOtherTest->UseVisualStyleBackColor = true;
+			this->btnOtherTest->Click += gcnew System::EventHandler(this, &Form1::btnOtherTest_Click);
+			// 
+			// btnColorNormal
+			// 
+			this->btnColorNormal->Location = System::Drawing::Point(91, 94);
+			this->btnColorNormal->Name = L"btnColorNormal";
+			this->btnColorNormal->Size = System::Drawing::Size(123, 23);
+			this->btnColorNormal->TabIndex = 6;
+			this->btnColorNormal->Text = L"&color Normal";
+			this->btnColorNormal->UseVisualStyleBackColor = true;
+			this->btnColorNormal->Click += gcnew System::EventHandler(this, &Form1::btnColorNormal_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(292, 148);
-			this->Controls->Add(this->btnColor);
+			this->ClientSize = System::Drawing::Size(516, 328);
+			this->Controls->Add(this->btnOtherTest);
+			this->Controls->Add(this->btnColorNormal);
+			this->Controls->Add(this->btnColorCentering);
 			this->Controls->Add(this->btnlsMiscFolder);
 			this->Controls->Add(this->btnFolderCentering);
 			this->Controls->Add(this->btnFolderNormal);
@@ -193,7 +220,47 @@ namespace AmbLibcppTest {
 		String^ folder;
 		browseFolder(this, "title", folder);
 	}
-	private: System::Void btnColor_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void btnOtherTest_Click(System::Object^  sender, System::EventArgs^  e) {
+		String^ mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".txt");
+		mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".ini");
+		mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".cpp");
+		{
+			array<unsigned char>^ zaa;
+			if (Ambiesoft::CppUtils::ReadAlternate(L"C:\\T\\magic", L"alt", zaa))
+			{
+				String^ ttt = System::Text::Encoding::UTF8->GetString(zaa);
+			}
+
+		}
+		String^ aaa = "aaa";
+		array<unsigned char>^ baaa = System::Text::Encoding::UTF8->GetBytes(aaa);
+
+		System::Diagnostics::Debug::Assert(
+			Ambiesoft::CppUtils::WriteAlternate(L"C:\\T\\magic", L"alt", baaa)
+			);
+
+		array<unsigned char>^ zaa;
+		System::Diagnostics::Debug::Assert(
+			Ambiesoft::CppUtils::ReadAlternate(L"C:\\T\\magic", L"alt", zaa)
+			);
+
+		String^ zzz = System::Text::Encoding::UTF8->GetString(zaa);
+		System::Diagnostics::Debug::Assert(baaa->Length == zaa->Length);
+		System::Diagnostics::Debug::Assert(aaa == zzz);
+
+		array<String^>^ as = gcnew array<String^>(2);
+		as[0] = L"C:\\T\\x\\a";
+		as[1] = L"C:\\T\\x\\b";
+		Ambiesoft::CppUtils::DeleteFiles(as);
+		Ambiesoft::CppUtils::DeleteFile(L"C:\\T\\x\\*.csproj");
+
+		Ambiesoft::CppUtils::CopyFile(L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
+	}
+	private: System::Void btnColorNormal_Click(System::Object^  sender, System::EventArgs^  e) {
+		ColorDialog dlg;
+		dlg.ShowDialog();
+	}
+	private: System::Void btnColorCentering_Click(System::Object^  sender, System::EventArgs^  e) {
 		CenteringDialog centering(this);
 		ColorDialog dlg;
 		dlg.ShowDialog();

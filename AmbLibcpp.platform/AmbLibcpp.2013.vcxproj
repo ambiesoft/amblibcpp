@@ -86,7 +86,7 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)AmblibCpp\Natives\$(PlatformTarget)\</OutDir>
+    <OutDir>$(SolutionDir)AmbLibcpp\Natives\$(PlatformTarget)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(RootNamespace).$(ProjectName).$(PlatformTarget)</TargetName>
@@ -94,7 +94,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)AmblibCpp\Natives\$(PlatformTarget)\</OutDir>
+    <OutDir>$(SolutionDir)AmbLibcpp\Natives\$(PlatformTarget)\</OutDir>
     <TargetName>$(RootNamespace).$(ProjectName).$(PlatformTarget)</TargetName>
     <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>

@@ -27,17 +27,13 @@ namespace AmbLibcppTestCS
         //    return null;
         //}
 
-        //static Program()
-        //{
-        //    System.AppDomain.CurrentDomain.AssemblyResolve += CustomResolve;
-        //}
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // System.AppDomain.CurrentDomain.AssemblyResolve += CustomResolve;
+            MessageBox.Show(Environment.Is64BitProcess.ToString());
 
             CppUtils.testMessageBox("AAA");
 
