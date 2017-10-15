@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmbLibcpp", "AmbLibcpp\AmbLibcpp.2013.vcxproj", "{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmbLibcpp.platform", "AmbLibcpp.platform\AmbLibcpp.2013.vcxproj", "{87F0CE21-9CA6-448A-ACE8-B7FC9771DC87}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmbLibcppTest", "AmbLibcppTest\AmbLibcppTest.2013.vcxproj", "{7CFC8D65-9252-4C04-9337-545EB49A5B2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbLibcpp", "AmbLibcpp\AmbLibcpp.csproj", "{59DD3093-0F63-41E6-AD76-63B05358AE65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbLibcppTestCS", "AmbLibcppTestCS\AmbLibcppTestCS.csproj", "{777B449C-6C87-468B-AAC1-D3830A2A854B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,22 @@ Global
 		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Release|Win32.Build.0 = Release|Win32
 		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Release|x64.ActiveCfg = Release|x64
 		{7CFC8D65-9252-4C04-9337-545EB49A5B2D}.Release|x64.Build.0 = Release|x64
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Debug|Win32.Build.0 = Debug|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Debug|x64.Build.0 = Debug|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Release|Win32.ActiveCfg = Release|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Release|Win32.Build.0 = Release|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Release|x64.ActiveCfg = Release|Any CPU
+		{59DD3093-0F63-41E6-AD76-63B05358AE65}.Release|x64.Build.0 = Release|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Debug|Win32.Build.0 = Debug|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Debug|x64.Build.0 = Debug|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Release|Win32.ActiveCfg = Release|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Release|Win32.Build.0 = Release|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Release|x64.ActiveCfg = Release|Any CPU
+		{777B449C-6C87-468B-AAC1-D3830A2A854B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

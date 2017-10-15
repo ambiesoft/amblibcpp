@@ -10,6 +10,10 @@
 /AmbLibcpp/ship
 /AmbLibcpp/*.user
 
+AmbLibcpp/bin/
+AmbLibcpp/obj/
+
+
 # /AmbLibcppTest/
 /AmbLibcppTest/Debug
 /AmbLibcppTest/ship

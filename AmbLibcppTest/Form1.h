@@ -49,6 +49,7 @@ namespace AmbLibcppTest {
 	private: System::Windows::Forms::Button^  btnFolderNormal;
 	private: System::Windows::Forms::Button^  btnFolderCentering;
 	private: System::Windows::Forms::Button^  btnlsMiscFolder;
+	private: System::Windows::Forms::Button^  btnColor;
 
 
 	private:
@@ -70,13 +71,14 @@ namespace AmbLibcppTest {
 			this->btnFolderNormal = (gcnew System::Windows::Forms::Button());
 			this->btnFolderCentering = (gcnew System::Windows::Forms::Button());
 			this->btnlsMiscFolder = (gcnew System::Windows::Forms::Button());
+			this->btnColor = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnWithNullptr
 			// 
 			this->btnWithNullptr->Location = System::Drawing::Point(0, 0);
 			this->btnWithNullptr->Name = L"btnWithNullptr";
-			this->btnWithNullptr->Size = System::Drawing::Size(75, 23);
+			this->btnWithNullptr->Size = System::Drawing::Size(75, 25);
 			this->btnWithNullptr->TabIndex = 0;
 			this->btnWithNullptr->Text = L"with nullptr";
 			this->btnWithNullptr->UseVisualStyleBackColor = true;
@@ -84,9 +86,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnWithActiveForm
 			// 
-			this->btnWithActiveForm->Location = System::Drawing::Point(0, 29);
+			this->btnWithActiveForm->Location = System::Drawing::Point(0, 31);
 			this->btnWithActiveForm->Name = L"btnWithActiveForm";
-			this->btnWithActiveForm->Size = System::Drawing::Size(75, 23);
+			this->btnWithActiveForm->Size = System::Drawing::Size(75, 25);
 			this->btnWithActiveForm->TabIndex = 1;
 			this->btnWithActiveForm->Text = L"with ActiveForm";
 			this->btnWithActiveForm->UseVisualStyleBackColor = true;
@@ -94,9 +96,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnWithThis
 			// 
-			this->btnWithThis->Location = System::Drawing::Point(0, 58);
+			this->btnWithThis->Location = System::Drawing::Point(0, 63);
 			this->btnWithThis->Name = L"btnWithThis";
-			this->btnWithThis->Size = System::Drawing::Size(75, 23);
+			this->btnWithThis->Size = System::Drawing::Size(75, 25);
 			this->btnWithThis->TabIndex = 2;
 			this->btnWithThis->Text = L"with this";
 			this->btnWithThis->UseVisualStyleBackColor = true;
@@ -106,7 +108,7 @@ namespace AmbLibcppTest {
 			// 
 			this->btnFolderNormal->Location = System::Drawing::Point(91, 0);
 			this->btnFolderNormal->Name = L"btnFolderNormal";
-			this->btnFolderNormal->Size = System::Drawing::Size(123, 23);
+			this->btnFolderNormal->Size = System::Drawing::Size(123, 25);
 			this->btnFolderNormal->TabIndex = 3;
 			this->btnFolderNormal->Text = L"folder normal";
 			this->btnFolderNormal->UseVisualStyleBackColor = true;
@@ -114,9 +116,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnFolderCentering
 			// 
-			this->btnFolderCentering->Location = System::Drawing::Point(91, 29);
+			this->btnFolderCentering->Location = System::Drawing::Point(91, 31);
 			this->btnFolderCentering->Name = L"btnFolderCentering";
-			this->btnFolderCentering->Size = System::Drawing::Size(123, 23);
+			this->btnFolderCentering->Size = System::Drawing::Size(123, 25);
 			this->btnFolderCentering->TabIndex = 4;
 			this->btnFolderCentering->Text = L"folder centering";
 			this->btnFolderCentering->UseVisualStyleBackColor = true;
@@ -124,19 +126,30 @@ namespace AmbLibcppTest {
 			// 
 			// btnlsMiscFolder
 			// 
-			this->btnlsMiscFolder->Location = System::Drawing::Point(91, 58);
+			this->btnlsMiscFolder->Location = System::Drawing::Point(91, 63);
 			this->btnlsMiscFolder->Name = L"btnlsMiscFolder";
-			this->btnlsMiscFolder->Size = System::Drawing::Size(123, 23);
+			this->btnlsMiscFolder->Size = System::Drawing::Size(123, 25);
 			this->btnlsMiscFolder->TabIndex = 5;
 			this->btnlsMiscFolder->Text = L"folder lsMisc";
 			this->btnlsMiscFolder->UseVisualStyleBackColor = true;
 			this->btnlsMiscFolder->Click += gcnew System::EventHandler(this, &Form1::btnlsMiscFolder_Click);
 			// 
+			// btnColor
+			// 
+			this->btnColor->Location = System::Drawing::Point(91, 94);
+			this->btnColor->Name = L"btnColor";
+			this->btnColor->Size = System::Drawing::Size(123, 23);
+			this->btnColor->TabIndex = 6;
+			this->btnColor->Text = L"&color";
+			this->btnColor->UseVisualStyleBackColor = true;
+			this->btnColor->Click += gcnew System::EventHandler(this, &Form1::btnColor_Click);
+			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(292, 137);
+			this->ClientSize = System::Drawing::Size(292, 148);
+			this->Controls->Add(this->btnColor);
 			this->Controls->Add(this->btnlsMiscFolder);
 			this->Controls->Add(this->btnFolderCentering);
 			this->Controls->Add(this->btnFolderNormal);
@@ -180,6 +193,11 @@ namespace AmbLibcppTest {
 		String^ folder;
 		browseFolder(this, "title", folder);
 	}
-};
+	private: System::Void btnColor_Click(System::Object^  sender, System::EventArgs^  e) {
+		CenteringDialog centering(this);
+		ColorDialog dlg;
+		dlg.ShowDialog();
+	}
+	};
 }
 

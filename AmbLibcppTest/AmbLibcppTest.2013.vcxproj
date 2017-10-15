@@ -227,8 +227,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AmbLibcpp\AmbLibcpp.2013.vcxproj">
-      <Project>{87f0ce21-9ca6-448a-ace8-b7fc9771dc87}</Project>
+    <ProjectReference Include="..\AmbLibcpp\AmbLibcpp.csproj">
+      <Project>{59dd3093-0f63-41e6-ad76-63b05358ae65}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

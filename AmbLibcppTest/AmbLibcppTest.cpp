@@ -30,6 +30,8 @@ using namespace Ambiesoft;
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
 {
+	CenteringDialog center(nullptr);
+
 	CppUtils::CenteredMessageBox("AAA");
 
 	String^ mime = Ambiesoft::CppUtils::getMimeTypeFromExtention(".txt");

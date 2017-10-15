@@ -24,11 +24,11 @@ namespace AmbLibcppTestCS
 
         private void btnPractical_Click(object sender, EventArgs e)
         {
-            CppUtils.CenteredMessageBox("Are you sure to center the Messagebox?",
-                ProductName,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button2);
+            //CppUtils.CenteredMessageBox("Are you sure to center the Messagebox?",
+            //    ProductName,
+            //    MessageBoxButtons.YesNo,
+            //    MessageBoxIcon.Information,
+            //    MessageBoxDefaultButton.Button2);
         }
     }
 }
