@@ -93,7 +93,22 @@ public class EmbeddedAssembly
         // Create the file on disk
         if (!fileOk)
         {
-            System.IO.File.WriteAllBytes(tempFile, ba);
+            try
+            {
+                System.IO.File.WriteAllBytes(tempFile, ba);
+            }
+            catch
+            {
+                // old version exists? Try with different name
+                string originaltempFile = tempFile;
+                int num = 1;
+                int maxtry = 32;
+                while (!TryWriteAllBytes(tempFile,ba) && --maxtry > 0)
+                {
+                    tempFile = originaltempFile + num.ToString();
+                    num++;
+                }
+            }
         }
         
         // Load it into memory
@@ -103,7 +118,17 @@ public class EmbeddedAssembly
         dic.Add(asm.FullName, asm);
         return asm;
     }
-
+    static bool TryWriteAllBytes(string tempFile, byte[] ba)
+    {
+        try
+        {
+            System.IO.File.WriteAllBytes(tempFile, ba);
+            return true;
+        }
+        catch
+        { }
+        return false;
+    }
     /// <summary>
     /// Retrieve specific loaded DLL/assembly from memory
     /// </summary>
