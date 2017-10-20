@@ -32,7 +32,9 @@ namespace Ambiesoft
             //    EmbeddedAssembly.Load(native, filename);
             //}
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
         }
+
         static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             //Ambiesoft.Natives.x64.Ambiesoft.AmbLibcpp.platform.x64.dll
@@ -51,6 +53,10 @@ namespace Ambiesoft
                 return EmbeddedAssembly.Load(embeddedPath, filename);
             }
             return null;
+        }
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            EmbeddedAssembly.Unload();
         }
 
         static bool prepared_ = false;

@@ -5,6 +5,26 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
 
+class TempAssemblyInfo
+{
+    public bool _autoDelete;
+    long _size;
+    DateTime _dtLW;
+    public Assembly _assem;
+    public string _filename;
+    public TempAssemblyInfo(Assembly assem)
+    {
+        _assem = assem;
+    }
+    public TempAssemblyInfo(Assembly assem, long size, DateTime dt, string filename)
+    {
+        _autoDelete = true;
+        _assem = assem;
+        _size = size;
+        _dtLW = dt;
+        _filename = filename;
+    }
+}
 /// <summary>
 /// A class for loading Embedded Assembly
 /// </summary>
@@ -12,7 +32,7 @@ public class EmbeddedAssembly
 {
     // Version 1.3
 
-    static Dictionary<string, Assembly> dic = null;
+    static Dictionary<string, TempAssemblyInfo> dic = null;
 
     /// <summary>
     /// Load Assembly, DLL from Embedded Resources into memory.
@@ -22,7 +42,7 @@ public class EmbeddedAssembly
     public static Assembly Load(string embeddedResource, string fileName)
     {
         if (dic == null)
-            dic = new Dictionary<string, Assembly>();
+            dic = new Dictionary<string, TempAssemblyInfo>();
 
         byte[] ba = null;
         Assembly asm = null;
@@ -42,7 +62,7 @@ public class EmbeddedAssembly
                 asm = Assembly.Load(ba);
 
                 // Add the assembly/dll into dictionary
-                dic.Add(asm.FullName, asm);
+                dic.Add(asm.FullName, new TempAssemblyInfo(asm));
                 return asm; ;
             }
             catch
@@ -53,7 +73,7 @@ public class EmbeddedAssembly
             }
         }
 
-        bool fileOk = false;
+        // bool fileOk = false;
         string tempFile = "";
 
         using (SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider())
@@ -62,48 +82,66 @@ public class EmbeddedAssembly
             string fileHash = BitConverter.ToString(sha1.ComputeHash(ba)).Replace("-", string.Empty);
             
             // Define the temporary storage location of the DLL/assembly
-            tempFile = Path.GetTempPath() + fileName;
+            tempFile = Path.GetTempFileName();// Path.GetTempPath() + fileName;
 
-            // Determines whether the DLL/assembly is existed or not
-            if (File.Exists(tempFile))
-            {
-                // Get the hash value of the existed file
-                byte[] bb = File.ReadAllBytes(tempFile);
-                string fileHash2 = BitConverter.ToString(sha1.ComputeHash(bb)).Replace("-", string.Empty);
+            //// Determines whether the DLL/assembly is existed or not
+            //if (File.Exists(tempFile))
+            //{
+            //    // Get the hash value of the existed file
+            //    byte[] bb = File.ReadAllBytes(tempFile);
+            //    string fileHash2 = BitConverter.ToString(sha1.ComputeHash(bb)).Replace("-", string.Empty);
 
-                // Compare the existed DLL/assembly with the Embedded DLL/assembly
-                if (fileHash == fileHash2)
-                {
-                    // Same file
-                    fileOk = true;
-                }
-                else
-                {
-                    // Not same
-                    fileOk = false;
-                }
-            }
-            else
-            {
-                // The DLL/assembly is not existed yet
-                fileOk = false;
-            }
+            //    // Compare the existed DLL/assembly with the Embedded DLL/assembly
+            //    if (fileHash == fileHash2)
+            //    {
+            //        // Same file
+            //        fileOk = true;
+            //    }
+            //    else
+            //    {
+            //        // Not same
+            //        fileOk = false;
+            //    }
+            //}
+            //else
+            //{
+            //    // The DLL/assembly is not existed yet
+            //    fileOk = false;
+            //}
         }
 
         // Create the file on disk
-        if (!fileOk)
-        {
-            System.IO.File.WriteAllBytes(tempFile, ba);
-        }
+        System.IO.File.WriteAllBytes(tempFile, ba);
+
         
         // Load it into memory
         asm = Assembly.LoadFile(tempFile);
 
         // Add the loaded DLL/assembly into dictionary
-        dic.Add(asm.FullName, asm);
+        dic.Add(asm.FullName, new TempAssemblyInfo(asm, 100, DateTime.Now, tempFile));
         return asm;
     }
+    /// <summary>
+    /// Called at process exit, Delete extracted assembly.
+    /// When a app using old assembly, other app using new assembly can not create
+    /// a file. So I create a arbitrary name assembly.
+    /// Here the assembly I created will be removed.
+    /// </summary>
+    public static void Unload()
+    {
+        foreach (TempAssemblyInfo tai in dic.Values)
+        {
+            try
+            {
+                if (tai._autoDelete)
+                    File.Delete(tai._filename);
+            }
+            catch
+            {
 
+            }
+        }
+    }
     /// <summary>
     /// Retrieve specific loaded DLL/assembly from memory
     /// </summary>
@@ -115,7 +153,7 @@ public class EmbeddedAssembly
             return null;
 
         if (dic.ContainsKey(assemblyFullName))
-            return dic[assemblyFullName];
+            return dic[assemblyFullName]._assem;
 
         return null;
 
