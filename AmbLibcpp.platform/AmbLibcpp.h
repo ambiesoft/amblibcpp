@@ -204,6 +204,23 @@ namespace Ambiesoft {
 			//{
 			//	CheckThread::IsMainThread;
 			//}
+
+			//static System::Windows::Forms::DialogResult Alert(
+			//	System::Windows::Forms::IWin32Window^ owner, String^ text)
+			//{
+			//	return CenteredMessageBox(
+			//		owner,
+			//		text,
+			//		System::Windows::Forms::Application::ProductName,
+			//		System::Windows::Forms::MessageBoxButtons::OK,
+			//		System::Windows::Forms::MessageBoxIcon::Warning);
+			//}
+			//static System::Windows::Forms::DialogResult Alert(
+			//	String^ text)
+			//{
+			//	return Alert(nullptr, text);
+			//}
+
 		};
 
 

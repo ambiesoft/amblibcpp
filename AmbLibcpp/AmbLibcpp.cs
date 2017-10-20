@@ -243,7 +243,33 @@ namespace Ambiesoft
                 String.Empty);
         }
 
+        public static DialogResult Info(IWin32Window owner, string text)
+        {
+            return CenteredMessageBox(
+                owner,
+                text,
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        public static DialogResult Info(string text)
+        {
+            return Info(null, text);
+        }
 
+        public static DialogResult Alert(IWin32Window owner, string text)
+        {
+            return CenteredMessageBox(
+                owner,
+                text,
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+        public static DialogResult Alert(string text)
+        {
+            return Alert(null, text);
+        }
 
     }
 

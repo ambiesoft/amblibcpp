@@ -193,9 +193,7 @@ namespace Ambiesoft {
 			for each(String^ s in tos)
 				stdTos.push_back(toWstring(s));
 
-			int ret;
-			SHMoveFile(stdTos, stdFroms, &ret);
-			return ret;
+			return SHMoveFile(stdTos, stdFroms);
 		}
 		int CppUtils::DeleteFiles(cli::array<String^>^ files)
 		{
@@ -203,9 +201,7 @@ namespace Ambiesoft {
 			for each(String^ s in files)
 				stdfiles.push_back(toWstring(s));
 
-			int ret;
-			SHDeleteFile(stdfiles, &ret);
-			return ret;
+			return SHDeleteFile(stdfiles);
 		}
 		bool CppUtils::WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data)
 		{
