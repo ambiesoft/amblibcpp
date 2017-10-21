@@ -1,10 +1,40 @@
-import ../distSolution/distSoluton
+import sys
+import timeit
+import subprocess
+
+sys.path.append('../distSolution')
+
+import distSolution
 
 
 def main():
-    msbuild = getMsBuildExe()
-    if not msbuild:
+    msbuildexe = distSolution.getMsBuildExe()
+    if not msbuildexe:
         errorexit("MSBuild not found.")
+
+    # x86
+    args = [
+        msbuildexe,
+        'AmbLibcpp.2013.sln',
+        '/t:AmbLibcpp_platform',
+        '/p:Configuration=Release',
+        '/p:Platform=x64',
+    ]
+
+    print(args)
+    subprocess.check_call(args)
+
+    # win32
+    args = [
+        msbuildexe,
+        'AmbLibcpp.2013.sln',
+        '/t:AmbLibcpp_platform',
+        '/p:Configuration=Release',
+        '/p:Platform=Win32',
+    ]
+
+    print(args)
+    subprocess.check_call(args)
 
 def errorexit(error):
     print(error)
