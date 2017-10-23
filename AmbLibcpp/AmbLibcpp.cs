@@ -270,6 +270,15 @@ namespace Ambiesoft
         {
             return Alert(null, text);
         }
+        
+        public static DialogResult Alert(IWin32Window owner, Exception ex)
+        {
+            return Alert(owner, ex.Message);
+        }
+        public static DialogResult Alert(Exception ex)
+        {
+            return Alert(null, ex);
+        }
 
     }
 

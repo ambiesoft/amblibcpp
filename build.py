@@ -12,7 +12,7 @@ def main():
     if not msbuildexe:
         errorexit("MSBuild not found.")
 
-    # x86
+    # platform-x64
     args = [
         msbuildexe,
         'AmbLibcpp.2013.sln',
@@ -20,11 +20,11 @@ def main():
         '/p:Configuration=Release',
         '/p:Platform=x64',
     ]
-
     print(args)
     subprocess.check_call(args)
 
-    # win32
+
+    # platform-win32
     args = [
         msbuildexe,
         'AmbLibcpp.2013.sln',
@@ -32,9 +32,22 @@ def main():
         '/p:Configuration=Release',
         '/p:Platform=Win32',
     ]
-
     print(args)
     subprocess.check_call(args)
+
+
+    # aambLibcpp-win32 (actually AnyCPU)
+    args = [
+        msbuildexe,
+        'AmbLibcpp.2013.sln',
+        '/t:AmbLibcpp',
+        '/p:Configuration=Release',
+        '/p:Platform=Win32',
+    ]
+    print(args)
+    subprocess.check_call(args)
+
+
 
 def errorexit(error):
     print(error)
