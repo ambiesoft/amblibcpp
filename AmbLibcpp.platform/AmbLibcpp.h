@@ -71,9 +71,12 @@ namespace Ambiesoft {
 
 			static int CopyFile(String^ src, String^ dest);
 			static int DeleteFile(String^ file);
+			static int MoveFile(String^ src, String^ dest);
 
-			static int MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
+			static int CopyFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
 			static int DeleteFiles(cli::array<String^>^ files);
+			static int MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
+			
 
 			static bool WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data);
 			static bool ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data);

@@ -30,5 +30,10 @@ namespace AmbLibcppTestCS
             //    MessageBoxIcon.Information,
             //    MessageBoxDefaultButton.Button2);
         }
+
+        private void btnTestCopy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

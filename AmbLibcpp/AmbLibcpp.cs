@@ -83,11 +83,19 @@ namespace Ambiesoft
         {
             return platform.CppUtils.CopyFile(src, dest);
         }
+        public static int MoveFile(string src, string dest)
+        {
+            return platform.CppUtils.MoveFile(src, dest);
+        }
         public static int DeleteFile(string file)
         {
             return platform.CppUtils.DeleteFile(file);
         }
 
+        public static int CopyFiles(string[] froms, string[] tos)
+        {
+            return platform.CppUtils.CopyFiles(froms, tos);
+        }
         public static int MoveFiles(string[] froms, string[] tos)
         {
             return platform.CppUtils.MoveFiles(froms, tos);

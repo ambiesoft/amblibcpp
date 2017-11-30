@@ -175,25 +175,43 @@ namespace Ambiesoft {
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(file);
 			return SHDeleteFile(pSrc);
 		}
-
-		int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		int CppUtils::MoveFile(String^ src, String^ dest)
 		{
-			if (!froms || !tos)
+			pin_ptr<const wchar_t> pSrc = PtrToStringChars(src);
+			pin_ptr<const wchar_t> pDest = PtrToStringChars(dest);
+
+			return SHMoveFile(pDest, pSrc);
+		}
+
+		bool prepareVector(
+			cli::array<String^>^ clrfroms,
+			cli::array<String^>^ clrtos,
+			vector<wstring>& stdfroms,
+			vector<wstring>& stdtos)
+		{
+			if (!clrfroms || !clrtos)
 				return false;
-			if (froms->Length == 0 || tos->Length == 0)
+			if (clrfroms->Length == 0 || clrtos->Length == 0)
 				return false;
-			if (froms->Length != tos->Length)
+			if (clrfroms->Length != clrtos->Length)
 				return false;
 
+			for each(String^ s in clrfroms)
+				stdfroms.push_back(toWstring(s));
+			for each(String^ s in clrtos)
+				stdtos.push_back(toWstring(s));
+
+			return true;
+		}
+		int CppUtils::CopyFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		{
 			vector<wstring> stdFroms;
 			vector<wstring> stdTos;
 
-			for each(String^ s in froms)
-				stdFroms.push_back(toWstring(s));
-			for each(String^ s in tos)
-				stdTos.push_back(toWstring(s));
+			if (!prepareVector(froms, tos, stdFroms, stdTos))
+				return 1;
 
-			return SHMoveFile(stdTos, stdFroms);
+			return SHCopyFile(stdTos, stdFroms);
 		}
 		int CppUtils::DeleteFiles(cli::array<String^>^ files)
 		{
@@ -203,6 +221,19 @@ namespace Ambiesoft {
 
 			return SHDeleteFile(stdfiles);
 		}
+		int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		{
+			vector<wstring> stdFroms;
+			vector<wstring> stdTos;
+			
+			if (!prepareVector(froms, tos, stdFroms, stdTos))
+				return 1;
+
+			return SHMoveFile(stdTos, stdFroms);
+		}
+		
+
+
 		bool CppUtils::WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data)
 		{
 			if (data->Length <= 0)

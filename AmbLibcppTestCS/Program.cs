@@ -33,7 +33,7 @@ namespace AmbLibcppTestCS
         [STAThread]
         static void Main()
         {
-            MessageBox.Show(Environment.Is64BitProcess.ToString());
+            // MessageBox.Show(Environment.Is64BitProcess.ToString());
 
             CppUtils.testMessageBox("AAA");
 
