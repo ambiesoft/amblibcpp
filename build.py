@@ -8,7 +8,7 @@ import distSolution
 
 
 def main():
-    msbuildexe = distSolution.getMsBuildExe()
+    msbuildexe = distSolution.getMsBuildExe('AmbLibcpp.2013.sln')
     if not msbuildexe:
         errorexit("MSBuild not found.")
 

@@ -66,7 +66,9 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="dist\History.txt" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Natives\x64\Ambiesoft.AmbLibcpp.platform.x64.dll" />
     <EmbeddedResource Include="Natives\x86\Ambiesoft.AmbLibcpp.platform.x86.dll" />

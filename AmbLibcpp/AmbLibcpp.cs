@@ -251,6 +251,8 @@ namespace Ambiesoft
                 String.Empty);
         }
 
+
+
         public static DialogResult Info(IWin32Window owner, string text)
         {
             return CenteredMessageBox(
@@ -264,6 +266,8 @@ namespace Ambiesoft
         {
             return Info(null, text);
         }
+
+
 
         public static DialogResult Alert(IWin32Window owner, string text)
         {
@@ -288,6 +292,25 @@ namespace Ambiesoft
             return Alert(null, ex);
         }
 
+
+        public static DialogResult YesOrNo(IWin32Window owner, string text, MessageBoxDefaultButton defbutton)
+        {
+            return CenteredMessageBox(
+                       owner,
+                       text,
+                       Application.ProductName,
+                       MessageBoxButtons.YesNo,
+                       MessageBoxIcon.Question,
+                       defbutton);
+        }
+        public static DialogResult YesOrNo(string text)
+        {
+            return YesOrNo(null, text, MessageBoxDefaultButton.Button1);
+        }
+        public static DialogResult YesOrNo(string text,MessageBoxDefaultButton defbutton)
+        {
+            return YesOrNo(null, text, defbutton);
+        }
     }
 
     public class CenteringDialog : IDisposable
