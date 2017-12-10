@@ -311,6 +311,11 @@ namespace Ambiesoft
         {
             return YesOrNo(null, text, defbutton);
         }
+
+        public static string GetSelectedFolder(IWin32Window win, string title)
+        {
+            return platform.CppUtils.GetSelectedFolder(win, title);
+        }
     }
 
     public class CenteringDialog : IDisposable

@@ -36,7 +36,7 @@ namespace AmbLibcppTestCS
             // MessageBox.Show(Environment.Is64BitProcess.ToString());
 
             CppUtils.testMessageBox("AAA");
-
+            string folder = CppUtils.GetSelectedFolder(null, "TEST");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

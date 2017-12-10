@@ -197,6 +197,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\lsMisc\browseFolder.cpp" />
     <ClCompile Include="..\..\lsMisc\CenterWindow.cpp" />
     <ClCompile Include="..\..\lsMisc\cppclr\clrString.cpp" />
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
@@ -211,6 +212,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\lsMisc\browseFolder.h" />
     <ClInclude Include="..\..\lsMisc\CenterWindow.h" />
     <ClInclude Include="..\..\lsMisc\cppclr\clrString.h" />
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />

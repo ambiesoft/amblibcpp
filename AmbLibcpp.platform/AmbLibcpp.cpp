@@ -22,6 +22,7 @@
 //SUCH DAMAGE.
 
 #include "stdafx.h"
+#include "../../browseFolder.h"
 
 #include "AmbLibcpp.h"
 
@@ -470,5 +471,12 @@ namespace Ambiesoft {
 			ghCMB = NULL;
 		}
 
+		String^ CppUtils::GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title)
+		{
+			String^ folder;
+			if (!browseFolder(win, title, folder))
+				return nullptr;
+			return folder;
+		}
 	}
 }

@@ -224,6 +224,7 @@ namespace Ambiesoft {
 			//	return Alert(nullptr, text);
 			//}
 
+			static String^ GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title);
 		};
 
 
