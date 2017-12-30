@@ -22,7 +22,8 @@
 //SUCH DAMAGE.
 
 #include "stdafx.h"
-#include "../../browseFolder.h"
+#include "../../lsMisc/browseFolder.h"
+#include "../../lsMisc/OpenCommon.h"
 
 #include "AmbLibcpp.h"
 
@@ -477,6 +478,12 @@ namespace Ambiesoft {
 			if (!browseFolder(win, title, folder))
 				return nullptr;
 			return folder;
+		}
+
+		void CppUtils::OpenFolder(System::Windows::Forms::IWin32Window^ win, String^ path)
+		{
+			std::wstring strPath = CppUtils::getStdWstring(path);
+			Ambiesoft::OpenFolder(win ? (HWND)win->Handle.ToPointer() : NULL, strPath.c_str());
 		}
 	}
 }

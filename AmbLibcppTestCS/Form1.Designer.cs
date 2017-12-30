@@ -31,6 +31,7 @@
             this.btnNull = new System.Windows.Forms.Button();
             this.btnPractical = new System.Windows.Forms.Button();
             this.btnTestCopy = new System.Windows.Forms.Button();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNull
@@ -63,11 +64,22 @@
             this.btnTestCopy.UseVisualStyleBackColor = true;
             this.btnTestCopy.Click += new System.EventHandler(this.btnTestCopy_Click);
             // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Location = new System.Drawing.Point(35, 220);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(126, 23);
+            this.btnOpenFolder.TabIndex = 3;
+            this.btnOpenFolder.Text = "Open C-T";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 277);
+            this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.btnTestCopy);
             this.Controls.Add(this.btnPractical);
             this.Controls.Add(this.btnNull);
@@ -82,6 +94,7 @@
         private System.Windows.Forms.Button btnNull;
         private System.Windows.Forms.Button btnPractical;
         private System.Windows.Forms.Button btnTestCopy;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }
 

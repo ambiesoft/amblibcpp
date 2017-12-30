@@ -201,6 +201,7 @@
     <ClCompile Include="..\..\lsMisc\CenterWindow.cpp" />
     <ClCompile Include="..\..\lsMisc\cppclr\clrString.cpp" />
     <ClCompile Include="..\..\lsMisc\GetLastErrorString.cpp" />
+    <ClCompile Include="..\..\lsMisc\OpenCommon.cpp" />
     <ClCompile Include="..\..\lsMisc\SHMoveFile.cpp" />
     <ClCompile Include="AmbLibcpp.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="..\..\lsMisc\CenterWindow.h" />
     <ClInclude Include="..\..\lsMisc\cppclr\clrString.h" />
     <ClInclude Include="..\..\lsMisc\GetLastErrorString.h" />
+    <ClInclude Include="..\..\lsMisc\OpenCommon.h" />
     <ClInclude Include="..\..\lsMisc\SHMoveFile.h" />
     <ClInclude Include="AmbLibcpp.h" />
     <ClInclude Include="Stdafx.h" />

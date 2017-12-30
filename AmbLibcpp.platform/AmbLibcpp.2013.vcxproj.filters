@@ -35,6 +35,9 @@
     <ClCompile Include="..\..\lsMisc\browseFolder.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
@@ -56,6 +59,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\browseFolder.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\OpenCommon.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

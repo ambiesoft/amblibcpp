@@ -35,5 +35,10 @@ namespace AmbLibcppTestCS
         {
 
         }
+
+        private void btnOpenFolder_Click(object sender, EventArgs e)
+        {
+            CppUtils.OpenFolder(this, @"C:\T\testfile.txt");
+        }
     }
 }
