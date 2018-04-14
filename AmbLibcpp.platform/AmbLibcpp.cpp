@@ -165,26 +165,38 @@ namespace Ambiesoft {
 			return result;
 		}
 
-		int CppUtils::CopyFile(String^ src, String^ dest)
+		int CppUtils::CopyFile(System::Windows::Forms::IWin32Window^ win, String^ src, String^ dest)
 		{
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(src);
 			pin_ptr<const wchar_t> pDest = PtrToStringChars(dest);
 
-			return SHCopyFile(pDest, pSrc);
+			return SHCopyFile(win ? (HWND)win->Handle.ToPointer() : NULL, pDest, pSrc);
+		}
+		int CppUtils::CopyFile(String^ src, String^ dest)
+		{
+			return CopyFile(nullptr, src, dest);
+		}
+		int CppUtils::DeleteFile(System::Windows::Forms::IWin32Window^ win, String^ file)
+		{
+			pin_ptr<const wchar_t> pSrc = PtrToStringChars(file);
+			return SHDeleteFile(win ? (HWND)win->Handle.ToPointer() : NULL, pSrc);
 		}
 		int CppUtils::DeleteFile(String^ file)
 		{
-			pin_ptr<const wchar_t> pSrc = PtrToStringChars(file);
-			return SHDeleteFile(pSrc);
+			return DeleteFile(nullptr, file);
 		}
-		int CppUtils::MoveFile(String^ src, String^ dest)
+		int CppUtils::MoveFile(System::Windows::Forms::IWin32Window^ win, String^ src, String^ dest)
 		{
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(src);
 			pin_ptr<const wchar_t> pDest = PtrToStringChars(dest);
 
-			return SHMoveFile(pDest, pSrc);
+			return SHMoveFile(win ? (HWND)win->Handle.ToPointer() : NULL, pDest, pSrc);
 		}
-
+		int CppUtils::MoveFile(String^ src, String^ dest)
+		{
+			return MoveFile(nullptr, src, dest);
+		}
+		
 		bool prepareVector(
 			cli::array<String^>^ clrfroms,
 			cli::array<String^>^ clrtos,
@@ -205,7 +217,7 @@ namespace Ambiesoft {
 
 			return true;
 		}
-		int CppUtils::CopyFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		int CppUtils::CopyFiles(System::Windows::Forms::IWin32Window^ win, cli::array<String^>^ froms, cli::array<String^>^ tos)
 		{
 			vector<wstring> stdFroms;
 			vector<wstring> stdTos;
@@ -213,27 +225,41 @@ namespace Ambiesoft {
 			if (!prepareVector(froms, tos, stdFroms, stdTos))
 				return 1;
 
-			return SHCopyFile(stdTos, stdFroms);
+			return SHCopyFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdTos, stdFroms);
 		}
-		int CppUtils::DeleteFiles(cli::array<String^>^ files)
+		int CppUtils::CopyFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		{
+			return CopyFiles(nullptr, froms, tos);
+		}
+
+		int CppUtils::DeleteFiles(System::Windows::Forms::IWin32Window^ win, cli::array<String^>^ files)
 		{
 			vector<wstring> stdfiles;
 			for each(String^ s in files)
 				stdfiles.push_back(toWstring(s));
 
-			return SHDeleteFile(stdfiles);
+			return SHDeleteFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdfiles);
 		}
-		int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		int CppUtils::DeleteFiles(cli::array<String^>^ files)
+		{
+			return DeleteFiles(nullptr, files);
+		}
+
+		int CppUtils::MoveFiles(System::Windows::Forms::IWin32Window^ win, cli::array<String^>^ froms, cli::array<String^>^ tos)
 		{
 			vector<wstring> stdFroms;
 			vector<wstring> stdTos;
-			
+
 			if (!prepareVector(froms, tos, stdFroms, stdTos))
 				return 1;
 
-			return SHMoveFile(stdTos, stdFroms);
+			return SHMoveFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdTos, stdFroms);
 		}
-		
+		int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
+		{
+			return MoveFiles(nullptr, froms, tos);
+		}
+
 
 
 		bool CppUtils::WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data)

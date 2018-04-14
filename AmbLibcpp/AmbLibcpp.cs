@@ -79,30 +79,58 @@ namespace Ambiesoft
             return platform.CppUtils.humanReadableByteCount(len);
         }
 
+        public static int CopyFile(IWin32Window win, string src, string dest)
+        {
+            return platform.CppUtils.CopyFile(win, src, dest);
+        }
         public static int CopyFile(string src, string dest)
         {
-            return platform.CppUtils.CopyFile(src, dest);
+            return CopyFile(null, src, dest);
+        }
+
+        public static int MoveFile(IWin32Window win, string src, string dest)
+        {
+            return platform.CppUtils.MoveFile(win, src, dest);
         }
         public static int MoveFile(string src, string dest)
         {
-            return platform.CppUtils.MoveFile(src, dest);
+            return MoveFile(null, src, dest);
+        }
+
+        public static int DeleteFile(IWin32Window win, string file)
+        {
+            return platform.CppUtils.DeleteFile(win, file);
         }
         public static int DeleteFile(string file)
         {
-            return platform.CppUtils.DeleteFile(file);
+            return DeleteFile(null, file);
         }
 
+        public static int CopyFiles(IWin32Window win, string[] froms, string[] tos)
+        {
+            return platform.CppUtils.CopyFiles(win, froms, tos);
+        }
         public static int CopyFiles(string[] froms, string[] tos)
         {
-            return platform.CppUtils.CopyFiles(froms, tos);
+            return CopyFiles(null, froms, tos);
+        }
+
+        public static int MoveFiles(IWin32Window win, string[] froms, string[] tos)
+        {
+            return platform.CppUtils.MoveFiles(win, froms, tos);
         }
         public static int MoveFiles(string[] froms, string[] tos)
         {
-            return platform.CppUtils.MoveFiles(froms, tos);
+            return MoveFiles(null, froms, tos);
+        }
+
+        public static int DeleteFiles(IWin32Window win, string[] files)
+        {
+            return platform.CppUtils.DeleteFiles(win, files);
         }
         public static int DeleteFiles(string[] files)
         {
-            return platform.CppUtils.DeleteFiles(files);
+            return DeleteFiles(null, files);
         }
 
         public static bool WriteAlternate(string filename, string alterpath, byte[] data)
