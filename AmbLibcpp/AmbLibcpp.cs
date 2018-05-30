@@ -349,6 +349,10 @@ namespace Ambiesoft
         {
             platform.CppUtils.OpenFolder(win,path);
         }
+        public static string GetShortFileName(string longname)
+        {
+            return platform.CppUtils.GetShortFileName(longname);
+        }
     }
 
     public class CenteringDialog : IDisposable

@@ -40,4 +40,5 @@
 #include "../../lsMisc/SHMoveFile.h"
 #include "../../lsMisc/cppclr/clrString.h"
 #include "../../lsMisc/CenterWindow.h"
-#include "../../lsMisc/CenterWindow.h"
+
+

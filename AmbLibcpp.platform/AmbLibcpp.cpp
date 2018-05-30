@@ -22,8 +22,10 @@
 //SUCH DAMAGE.
 
 #include "stdafx.h"
+#include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/browseFolder.h"
 #include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
 
 #include "AmbLibcpp.h"
 
@@ -510,6 +512,14 @@ namespace Ambiesoft {
 		{
 			std::wstring strPath = CppUtils::getStdWstring(path);
 			Ambiesoft::OpenFolder(win ? (HWND)win->Handle.ToPointer() : NULL, strPath.c_str());
+		}
+
+		String^ CppUtils::GetShortFileName(String^ longname)
+		{
+			wstring clongname = toWstring(longname);
+			// return gcnew String(stdwin32::stdGetFirstLine(L"aaa").c_str());
+			wstring cshortname = stdwin32::stdGetShortPath(clongname);
+			return gcnew String(cshortname.c_str());
 		}
 	}
 }

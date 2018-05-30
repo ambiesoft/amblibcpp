@@ -38,6 +38,9 @@
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
@@ -62,6 +65,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\OpenCommon.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
