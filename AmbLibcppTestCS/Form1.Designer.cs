@@ -32,6 +32,7 @@
             this.btnPractical = new System.Windows.Forms.Button();
             this.btnTestCopy = new System.Windows.Forms.Button();
             this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.btnNativeVersion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNull
@@ -74,11 +75,22 @@
             this.btnOpenFolder.UseVisualStyleBackColor = true;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
+            // btnNativeVersion
+            // 
+            this.btnNativeVersion.Location = new System.Drawing.Point(225, 27);
+            this.btnNativeVersion.Name = "btnNativeVersion";
+            this.btnNativeVersion.Size = new System.Drawing.Size(75, 23);
+            this.btnNativeVersion.TabIndex = 4;
+            this.btnNativeVersion.Text = "native vertion";
+            this.btnNativeVersion.UseVisualStyleBackColor = true;
+            this.btnNativeVersion.Click += new System.EventHandler(this.btnNativeVersion_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 277);
+            this.Controls.Add(this.btnNativeVersion);
             this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.btnTestCopy);
             this.Controls.Add(this.btnPractical);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button btnPractical;
         private System.Windows.Forms.Button btnTestCopy;
         private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.Button btnNativeVersion;
     }
 }
 

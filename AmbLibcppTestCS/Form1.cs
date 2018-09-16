@@ -40,5 +40,10 @@ namespace AmbLibcppTestCS
         {
             CppUtils.OpenFolder(this, @"C:\T\testfile.txt");
         }
+
+        private void btnNativeVersion_Click(object sender, EventArgs e)
+        {
+            CppUtils.Info(CppUtils.GetNativeVersionString(Application.ExecutablePath));
+        }
     }
 }
