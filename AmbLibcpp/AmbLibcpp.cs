@@ -353,6 +353,11 @@ namespace Ambiesoft
         {
             return platform.CppUtils.GetShortFileName(longname);
         }
+
+        public static string GetNativeVersionString(string filename)
+        {
+            return platform.CppUtils.GetNativeVersionString(filename);
+        }
     }
 
     public class CenteringDialog : IDisposable

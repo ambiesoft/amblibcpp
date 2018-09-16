@@ -25,6 +25,7 @@
 #include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/browseFolder.h"
 #include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/GetVersionString.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
 
 #include "AmbLibcpp.h"
@@ -198,7 +199,7 @@ namespace Ambiesoft {
 		{
 			return MoveFile(nullptr, src, dest);
 		}
-		
+
 		bool prepareVector(
 			cli::array<String^>^ clrfroms,
 			cli::array<String^>^ clrtos,
@@ -520,6 +521,13 @@ namespace Ambiesoft {
 			// return gcnew String(stdwin32::stdGetFirstLine(L"aaa").c_str());
 			wstring cshortname = stdwin32::stdGetShortPath(clongname);
 			return gcnew String(cshortname.c_str());
+		}
+
+		String^ CppUtils::GetNativeVersionString(String^ filename)
+		{
+			wstring s = toWstring(filename);
+			s = Ambiesoft::GetVersionString(s.c_str());
+			return gcnew String(s.c_str());
 		}
 	}
 }

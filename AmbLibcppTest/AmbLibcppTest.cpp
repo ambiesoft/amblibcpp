@@ -30,10 +30,11 @@ using namespace Ambiesoft;
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
 {
+	String^ ver = CppUtils::GetNativeVersionString(Application::ExecutablePath);
 	{
 		CenteringDialog center(nullptr);
 	}
-	CppUtils::CenteredMessageBox("AAA");
+	CppUtils::CenteredMessageBox(ver);
 
 
 	Application::EnableVisualStyles();

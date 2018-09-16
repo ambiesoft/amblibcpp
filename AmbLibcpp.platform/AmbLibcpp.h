@@ -234,6 +234,8 @@ namespace Ambiesoft {
 
 			static void OpenFolder(System::Windows::Forms::IWin32Window^ win, String^ path);
 			static String^ GetShortFileName(String^ longname);
+
+			static String^ CppUtils::GetNativeVersionString(String^ filename);
 		};
 
 
