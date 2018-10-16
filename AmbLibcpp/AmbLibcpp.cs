@@ -358,6 +358,11 @@ namespace Ambiesoft
         {
             return platform.CppUtils.GetNativeVersionString(filename);
         }
+
+        public static bool AmbSetProcessDPIAware()
+        {
+            return platform.CppUtils.AmbSetProcessDPIAware();
+        }
     }
 
     public class CenteringDialog : IDisposable

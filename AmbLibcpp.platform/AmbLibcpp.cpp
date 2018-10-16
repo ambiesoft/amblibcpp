@@ -529,5 +529,18 @@ namespace Ambiesoft {
 			s = Ambiesoft::GetVersionString(s.c_str());
 			return gcnew String(s.c_str());
 		}
+
+		// http://www.rw-designer.com/DPI-aware
+		bool CppUtils::AmbSetProcessDPIAware()
+		{
+			HMODULE hUser32 = LoadLibraryA("user32.dll");
+			typedef BOOL(WINAPI *SetProcessDPIAwareFunc)();
+			SetProcessDPIAwareFunc setDPIAware = (SetProcessDPIAwareFunc)GetProcAddress(hUser32, "SetProcessDPIAware");
+			bool ret = false;
+			if (setDPIAware)
+				ret = !!setDPIAware();
+			FreeLibrary(hUser32);
+			return ret;
+		}
 	}
 }

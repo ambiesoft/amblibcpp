@@ -236,6 +236,7 @@ namespace Ambiesoft {
 			static String^ GetShortFileName(String^ longname);
 
 			static String^ GetNativeVersionString(String^ filename);
+			static bool AmbSetProcessDPIAware();
 		};
 
 
