@@ -231,6 +231,7 @@ namespace Ambiesoft {
 			//}
 
 			static String^ GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title);
+			static String^ GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title, String^ folder);
 
 			static void OpenFolder(System::Windows::Forms::IWin32Window^ win, String^ path);
 			static String^ GetShortFileName(String^ longname);

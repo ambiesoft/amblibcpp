@@ -33,6 +33,8 @@
             this.btnTestCopy = new System.Windows.Forms.Button();
             this.btnOpenFolder = new System.Windows.Forms.Button();
             this.btnNativeVersion = new System.Windows.Forms.Button();
+            this.txtInitialDir = new System.Windows.Forms.TextBox();
+            this.btnSelectFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNull
@@ -85,11 +87,30 @@
             this.btnNativeVersion.UseVisualStyleBackColor = true;
             this.btnNativeVersion.Click += new System.EventHandler(this.btnNativeVersion_Click);
             // 
+            // txtInitialDir
+            // 
+            this.txtInitialDir.Location = new System.Drawing.Point(371, 207);
+            this.txtInitialDir.Name = "txtInitialDir";
+            this.txtInitialDir.Size = new System.Drawing.Size(229, 20);
+            this.txtInitialDir.TabIndex = 5;
+            // 
+            // btnSelectFolder
+            // 
+            this.btnSelectFolder.Location = new System.Drawing.Point(371, 233);
+            this.btnSelectFolder.Name = "btnSelectFolder";
+            this.btnSelectFolder.Size = new System.Drawing.Size(229, 23);
+            this.btnSelectFolder.TabIndex = 6;
+            this.btnSelectFolder.Text = "&Select Folder...";
+            this.btnSelectFolder.UseVisualStyleBackColor = true;
+            this.btnSelectFolder.Click += new System.EventHandler(this.btnSelectFolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 277);
+            this.Controls.Add(this.btnSelectFolder);
+            this.Controls.Add(this.txtInitialDir);
             this.Controls.Add(this.btnNativeVersion);
             this.Controls.Add(this.btnOpenFolder);
             this.Controls.Add(this.btnTestCopy);
@@ -98,6 +119,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,6 +130,8 @@
         private System.Windows.Forms.Button btnTestCopy;
         private System.Windows.Forms.Button btnOpenFolder;
         private System.Windows.Forms.Button btnNativeVersion;
+        private System.Windows.Forms.TextBox txtInitialDir;
+        private System.Windows.Forms.Button btnSelectFolder;
     }
 }
 

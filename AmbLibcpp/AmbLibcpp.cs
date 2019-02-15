@@ -344,6 +344,10 @@ namespace Ambiesoft
         {
             return platform.CppUtils.GetSelectedFolder(win, title);
         }
+        public static string GetSelectedFolder(IWin32Window win, string title, string folder)
+        {
+            return platform.CppUtils.GetSelectedFolder(win, title, folder);
+        }
 
         public static void OpenFolder(IWin32Window win, string path)
         {

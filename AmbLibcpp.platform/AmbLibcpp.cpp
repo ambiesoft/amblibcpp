@@ -504,6 +504,10 @@ namespace Ambiesoft {
 		String^ CppUtils::GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title)
 		{
 			String^ folder;
+			return GetSelectedFolder(win, title, folder);
+		}
+		String^ CppUtils::GetSelectedFolder(System::Windows::Forms::IWin32Window^ win, String^ title, String^ folder)
+		{
 			if (!browseFolder(win, title, folder))
 				return nullptr;
 			return folder;

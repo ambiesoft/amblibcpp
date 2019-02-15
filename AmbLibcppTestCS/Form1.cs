@@ -45,5 +45,12 @@ namespace AmbLibcppTestCS
         {
             CppUtils.Info(CppUtils.GetNativeVersionString(Application.ExecutablePath));
         }
+
+        private void btnSelectFolder_Click(object sender, EventArgs e)
+        {
+            string folder = CppUtils.GetSelectedFolder(this, "test title", txtInitialDir.Text);
+            if (!string.IsNullOrEmpty(folder))
+                txtInitialDir.Text = folder;
+        }
     }
 }
