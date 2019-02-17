@@ -321,6 +321,47 @@ namespace Ambiesoft
         }
 
 
+
+
+
+
+
+
+
+
+
+        public static DialogResult Fatal(IWin32Window owner, string text)
+        {
+            return CenteredMessageBox(
+                owner,
+                text,
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+        public static DialogResult Fatal(string text)
+        {
+            return Fatal(null, text);
+        }
+
+        public static DialogResult Fatal(IWin32Window owner, Exception ex)
+        {
+            return Fatal(owner, ex.Message);
+        }
+        public static DialogResult Fatal(Exception ex)
+        {
+            return Fatal(null, ex);
+        }
+
+
+
+
+
+
+
+
+
+
         public static DialogResult YesOrNo(IWin32Window owner, string text, MessageBoxDefaultButton defbutton)
         {
             return CenteredMessageBox(
