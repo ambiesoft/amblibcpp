@@ -9,15 +9,15 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyTitleAttribute("AmbLibcpp")];
 [assembly:AssemblyDescriptionAttribute("")];
 [assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("")];
+[assembly:AssemblyCompanyAttribute("Ambiesoft")];
 [assembly:AssemblyProductAttribute("AmbLibcpp")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c)  2012")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c)  2020")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
 //
 
-[assembly:AssemblyVersionAttribute("1.0.0.1")];
+[assembly:AssemblyVersionAttribute("1.3.2.*")];
 
 [assembly:ComVisible(false)];
 

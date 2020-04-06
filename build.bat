@@ -1,3 +1,3 @@
-c:\local\python3.5\python.exe %~dp0build.py
+c:\local\python3\python.exe %~dp0build.py
 
 pause

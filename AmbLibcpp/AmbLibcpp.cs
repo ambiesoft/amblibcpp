@@ -408,6 +408,11 @@ namespace Ambiesoft
         {
             return platform.CppUtils.AmbSetProcessDPIAware();
         }
+
+        public static bool CreateDesktopShortcut(IWin32Window win, string title, string exe)
+        {
+            return platform.CppUtils.CreateDesktopShortcut(win, title, exe);
+        }
     }
 
     public class CenteringDialog : IDisposable

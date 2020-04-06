@@ -26,6 +26,7 @@
 #include "../../lsMisc/browseFolder.h"
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/CreateShortcutFile.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
 
 #include "AmbLibcpp.h"
@@ -545,6 +546,21 @@ namespace Ambiesoft {
 				ret = !!setDPIAware();
 			FreeLibrary(hUser32);
 			return ret;
+		}
+
+		bool CppUtils::CreateDesktopShortcut(System::Windows::Forms::IWin32Window^ win, String^ title, String^ exe)
+		{
+			String^ lnkFile = Path::Combine(
+				Environment::GetFolderPath(Environment::SpecialFolder::Desktop),
+				title + L".lnk");
+
+			String^ curDir = Path::GetDirectoryName(exe);
+			
+			return !!CreateShortcutFile(
+				win ? (HWND)win->Handle.ToPointer() : nullptr,
+				getStdWstring(lnkFile).c_str(),
+				getStdWstring(exe).c_str(),
+				getStdWstring(curDir).c_str());
 		}
 	}
 }

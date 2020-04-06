@@ -53,6 +53,7 @@ namespace AmbLibcppTest {
 
 	private: System::Windows::Forms::Button^  btnOtherTest;
 	private: System::Windows::Forms::Button^  btnColorNormal;
+	private: System::Windows::Forms::Button^  btnCreateDesktopShortcut;
 
 
 	private:
@@ -77,6 +78,7 @@ namespace AmbLibcppTest {
 			this->btnColorCentering = (gcnew System::Windows::Forms::Button());
 			this->btnOtherTest = (gcnew System::Windows::Forms::Button());
 			this->btnColorNormal = (gcnew System::Windows::Forms::Button());
+			this->btnCreateDesktopShortcut = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnWithNullptr
@@ -169,11 +171,22 @@ namespace AmbLibcppTest {
 			this->btnColorNormal->UseVisualStyleBackColor = true;
 			this->btnColorNormal->Click += gcnew System::EventHandler(this, &Form1::btnColorNormal_Click);
 			// 
+			// btnCreateDesktopShortcut
+			// 
+			this->btnCreateDesktopShortcut->Location = System::Drawing::Point(229, 0);
+			this->btnCreateDesktopShortcut->Name = L"btnCreateDesktopShortcut";
+			this->btnCreateDesktopShortcut->Size = System::Drawing::Size(135, 23);
+			this->btnCreateDesktopShortcut->TabIndex = 8;
+			this->btnCreateDesktopShortcut->Text = L"CreateDesktopShortcut";
+			this->btnCreateDesktopShortcut->UseVisualStyleBackColor = true;
+			this->btnCreateDesktopShortcut->Click += gcnew System::EventHandler(this, &Form1::btnCreateDesktopShortcut_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(516, 328);
+			this->Controls->Add(this->btnCreateDesktopShortcut);
 			this->Controls->Add(this->btnOtherTest);
 			this->Controls->Add(this->btnColorNormal);
 			this->Controls->Add(this->btnColorCentering);
@@ -265,6 +278,9 @@ namespace AmbLibcppTest {
 		ColorDialog dlg;
 		dlg.ShowDialog();
 	}
-	};
+	private: System::Void btnCreateDesktopShortcut_Click(System::Object^  sender, System::EventArgs^  e) {
+		CppUtils::CreateDesktopShortcut(this, "myshortcut file", Application::ExecutablePath);
+	}
+};
 }
 
