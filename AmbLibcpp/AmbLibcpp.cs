@@ -413,6 +413,10 @@ namespace Ambiesoft
         {
             return platform.CppUtils.CreateDesktopShortcut(win, title, exe);
         }
+        public static bool OpenCommon(IWin32Window win, string exe, string command)
+        {
+            return platform.CppUtils.OpenCommon(win, exe, command);
+        }
     }
 
     public class CenteringDialog : IDisposable

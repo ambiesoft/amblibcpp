@@ -239,6 +239,7 @@ namespace Ambiesoft {
 			static String^ GetNativeVersionString(String^ filename);
 			static bool AmbSetProcessDPIAware();
 			static bool CreateDesktopShortcut(System::Windows::Forms::IWin32Window^ win, String^ title, String^ exe);
+			static bool CppUtils::OpenCommon(System::Windows::Forms::IWin32Window^ win, String^ exe, String^ command);
 		};
 
 

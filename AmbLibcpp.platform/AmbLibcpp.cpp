@@ -562,5 +562,14 @@ namespace Ambiesoft {
 				getStdWstring(exe).c_str(),
 				getStdWstring(curDir).c_str());
 		}
+
+		bool CppUtils::OpenCommon(System::Windows::Forms::IWin32Window^ win, String^ exe, String^ command)
+		{
+			std::wstring strExe = CppUtils::getStdWstring(exe);
+			std::wstring strCommand = CppUtils::getStdWstring(command);
+			return !!Ambiesoft::OpenCommon(win ? (HWND)win->Handle.ToPointer() : NULL,
+				exe==nullptr ? nullptr : strExe.c_str(),
+				command==nullptr ? nullptr : strCommand.c_str());
+		}
 	}
 }
