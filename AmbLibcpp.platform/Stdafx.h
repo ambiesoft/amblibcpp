@@ -33,7 +33,7 @@
 
 
 #include <string>
-#include <stlsoft/smartptr/scoped_handle.hpp>
+// #include <stlsoft/smartptr/scoped_handle.hpp>
 
 
 #include "../../lsMisc/DebugMacro.h"

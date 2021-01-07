@@ -88,6 +88,16 @@ namespace Ambiesoft
             return CopyFile(null, src, dest);
         }
 
+        // NOT WORK (not become modal)
+        private static int ModalCopyFile(Form form, string src, string dest)
+        {
+            using (InvisibleForm invForm = new InvisibleForm(src, dest))
+            {
+                invForm.Owner = form;
+                invForm.ShowDialog();
+                return invForm._ret;
+            }
+        }
         public static int MoveFile(IWin32Window win, string src, string dest)
         {
             return platform.CppUtils.MoveFile(win, src, dest);

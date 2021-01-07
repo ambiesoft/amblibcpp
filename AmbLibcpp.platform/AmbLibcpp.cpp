@@ -28,6 +28,7 @@
 #include "../../lsMisc/GetVersionString.h"
 #include "../../lsMisc/CreateShortcutFile.h"
 #include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/CHandle.h"
 
 #include "AmbLibcpp.h"
 
@@ -275,20 +276,18 @@ namespace Ambiesoft {
 			stdfile += L":" + toWstring(alterpath);
 			pin_ptr<unsigned char > pData = &data[0];
 
-			HANDLE hFile = CreateFile(stdfile.c_str(),
+			CHandle file(CreateFile(stdfile.c_str(),
 				GENERIC_WRITE,
 				FILE_SHARE_WRITE,
 				NULL,
 				OPEN_ALWAYS,
 				0,
-				NULL);
-			if (hFile == INVALID_HANDLE_VALUE)
+				NULL));
+			if (!file)
 				return false;
 
-			stlsoft::scoped_handle<HANDLE> freer(hFile, CloseHandle);
-
 			DWORD dwWritten = 0;
-			if (!WriteFile(hFile, pData, data->Length, &dwWritten, NULL))
+			if (!WriteFile(file, pData, data->Length, &dwWritten, NULL))
 				return false;
 			if (dwWritten != data->Length)
 				return false;
@@ -304,17 +303,15 @@ namespace Ambiesoft {
 			stdfile += L":" + toWstring(alterpath);
 
 
-			HANDLE hFile = CreateFile(stdfile.c_str(),
+			CHandle file(CreateFile(stdfile.c_str(),
 				GENERIC_READ,
 				FILE_SHARE_READ,
 				NULL,
 				OPEN_ALWAYS,
 				0,
-				NULL);
-			if (hFile == INVALID_HANDLE_VALUE)
+				NULL));
+			if (!file)
 				return false;
-
-			stlsoft::scoped_handle<HANDLE> freer(hFile, CloseHandle);
 
 			DWORD dwWritten = 0;
 			vector<unsigned char> all;
@@ -322,7 +319,7 @@ namespace Ambiesoft {
 			DWORD dwRead = 0;
 			for (;;)
 			{
-				if (!ReadFile(hFile, buff, sizeof(buff), &dwRead, NULL))
+				if (!ReadFile(file, buff, sizeof(buff), &dwRead, NULL))
 					return false;
 				if (dwRead == 0)
 					break;

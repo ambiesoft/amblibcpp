@@ -267,7 +267,7 @@ namespace AmbLibcppTest {
 		Ambiesoft::CppUtils::DeleteFiles(as);
 		Ambiesoft::CppUtils::DeleteFile(L"C:\\T\\x\\*.csproj");
 
-		Ambiesoft::CppUtils::CopyFile(L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
+		Ambiesoft::CppUtils::CopyFile(this, L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
 	}
 	private: System::Void btnColorNormal_Click(System::Object^  sender, System::EventArgs^  e) {
 		ColorDialog dlg;
