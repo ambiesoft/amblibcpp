@@ -568,5 +568,25 @@ namespace Ambiesoft {
 				exe==nullptr ? nullptr : strExe.c_str(),
 				command==nullptr ? nullptr : strCommand.c_str());
 		}
+
+		String^ CppUtils::getWindowDebugString(IntPtr winptr)
+		{
+			if (winptr == (IntPtr)0)
+				return L"NullWin";
+			HWND h = (HWND)winptr.ToPointer();
+			if (!IsWindow(h))
+				return L"Not a window";
+			
+			
+			LONG style = ::GetWindowLongPtr(h, GWL_STYLE);
+			LONG exstyle = ::GetWindowLongPtr(h, GWL_EXSTYLE);
+
+			return String::Format(L"style={0}, exstyle={1}",
+				style, exstyle);
+		}
+		String^ CppUtils::getWindowDebugString(System::Windows::Forms::IWin32Window^ win)
+		{
+			return getWindowDebugString(win ? win->Handle : (IntPtr)0);
+		}
 	}
 }

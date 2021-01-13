@@ -240,6 +240,8 @@ namespace Ambiesoft {
 			static bool AmbSetProcessDPIAware();
 			static bool CreateDesktopShortcut(System::Windows::Forms::IWin32Window^ win, String^ title, String^ exe);
 			static bool CppUtils::OpenCommon(System::Windows::Forms::IWin32Window^ win, String^ exe, String^ command);
+			static String^ CppUtils::getWindowDebugString(IntPtr winptr);
+			static String^ CppUtils::getWindowDebugString(System::Windows::Forms::IWin32Window^ win);
 		};
 
 

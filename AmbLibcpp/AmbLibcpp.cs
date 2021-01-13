@@ -427,6 +427,14 @@ namespace Ambiesoft
         {
             return platform.CppUtils.OpenCommon(win, exe, command);
         }
+        public static string getWindowDebugString(IntPtr ptrwin)
+        {
+            return platform.CppUtils.getWindowDebugString(ptrwin);
+        }
+        public static string getWindowDebugString(IWin32Window win)
+        {
+            return platform.CppUtils.getWindowDebugString(win);
+        }
     }
 
     public class CenteringDialog : IDisposable
