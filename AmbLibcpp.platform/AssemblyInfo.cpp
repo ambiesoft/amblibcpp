@@ -11,13 +11,13 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("Ambiesoft")];
 [assembly:AssemblyProductAttribute("AmbLibcpp")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c)  2020")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c)  2021")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
 //
 
-[assembly:AssemblyVersionAttribute("1.3.2.*")];
+[assembly:AssemblyVersionAttribute("1.3.3.*")];
 
 [assembly:ComVisible(false)];
 

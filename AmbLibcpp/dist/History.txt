@@ -1,3 +1,6 @@
+2021/01/14 ver1.3.3
+Get Debug String
+
 2020/04/07 ver1.3.2
 Add CreateDesktopShortcut
 
