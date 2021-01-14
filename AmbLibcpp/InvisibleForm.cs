@@ -22,6 +22,15 @@ namespace Ambiesoft
             _dest = dest;
         }
 
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+                value = false;   // Prevent window from becoming visible
+            }
+            base.SetVisibleCore(value);
+        }
         delegate void VVDelegate();
         void afterLoad()
         {
@@ -29,6 +38,7 @@ namespace Ambiesoft
         }
         private void InvisibleForm_Load(object sender, EventArgs e)
         {
+            Visible = false;
             BeginInvoke(new VVDelegate(afterLoad));
         }
     }

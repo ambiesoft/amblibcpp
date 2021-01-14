@@ -54,6 +54,7 @@ namespace AmbLibcppTest {
 	private: System::Windows::Forms::Button^  btnOtherTest;
 	private: System::Windows::Forms::Button^  btnColorNormal;
 	private: System::Windows::Forms::Button^  btnCreateDesktopShortcut;
+	private: System::Windows::Forms::Button^  btnNazo;
 
 
 	private:
@@ -79,6 +80,7 @@ namespace AmbLibcppTest {
 			this->btnOtherTest = (gcnew System::Windows::Forms::Button());
 			this->btnColorNormal = (gcnew System::Windows::Forms::Button());
 			this->btnCreateDesktopShortcut = (gcnew System::Windows::Forms::Button());
+			this->btnNazo = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnWithNullptr
@@ -181,11 +183,22 @@ namespace AmbLibcppTest {
 			this->btnCreateDesktopShortcut->UseVisualStyleBackColor = true;
 			this->btnCreateDesktopShortcut->Click += gcnew System::EventHandler(this, &Form1::btnCreateDesktopShortcut_Click);
 			// 
+			// btnNazo
+			// 
+			this->btnNazo->Location = System::Drawing::Point(91, 197);
+			this->btnNazo->Name = L"btnNazo";
+			this->btnNazo->Size = System::Drawing::Size(75, 23);
+			this->btnNazo->TabIndex = 9;
+			this->btnNazo->Text = L"Nazo";
+			this->btnNazo->UseVisualStyleBackColor = true;
+			this->btnNazo->Click += gcnew System::EventHandler(this, &Form1::btnNazo_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(516, 328);
+			this->Controls->Add(this->btnNazo);
 			this->Controls->Add(this->btnCreateDesktopShortcut);
 			this->Controls->Add(this->btnOtherTest);
 			this->Controls->Add(this->btnColorNormal);
@@ -267,7 +280,9 @@ namespace AmbLibcppTest {
 		Ambiesoft::CppUtils::DeleteFiles(as);
 		Ambiesoft::CppUtils::DeleteFile(L"C:\\T\\x\\*.csproj");
 
-		Ambiesoft::CppUtils::CopyFile(this, L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
+		InvisibleForm invf(L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
+		invf.ShowDialog();
+		// Ambiesoft::CppUtils::CopyFile(this, L"Y:\\T\\*.zip", L"Y:\\T\\aaa\\");
 	}
 	private: System::Void btnColorNormal_Click(System::Object^  sender, System::EventArgs^  e) {
 		ColorDialog dlg;
@@ -280,6 +295,13 @@ namespace AmbLibcppTest {
 	}
 	private: System::Void btnCreateDesktopShortcut_Click(System::Object^  sender, System::EventArgs^  e) {
 		CppUtils::CreateDesktopShortcut(this, "myshortcut file", Application::ExecutablePath);
+	}
+	private: System::Void btnNazo_Click(System::Object^  sender, System::EventArgs^  e) {
+		String^ ver = CppUtils::GetNativeVersionString(Application::ExecutablePath);
+		{
+			CenteringDialog center(nullptr);
+		}
+		CppUtils::CenteredMessageBox(ver);
 	}
 };
 }
