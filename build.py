@@ -8,14 +8,14 @@ import distSolution
 
 
 def main():
-    msbuildexe = distSolution.getMsBuildExe('AmbLibcpp.2013.sln')
+    msbuildexe = distSolution.getMsBuildExe('AmbLibcpp.sln')
     if not msbuildexe:
         errorexit("MSBuild not found.")
 
     # platform-x64
     args = [
         msbuildexe,
-        'AmbLibcpp.2013.sln',
+        'AmbLibcpp.sln',
         '/t:AmbLibcpp_platform',
         '/p:Configuration=Release',
         '/p:Platform=x64',
@@ -27,7 +27,7 @@ def main():
     # platform-win32
     args = [
         msbuildexe,
-        'AmbLibcpp.2013.sln',
+        'AmbLibcpp.sln',
         '/t:AmbLibcpp_platform',
         '/p:Configuration=Release',
         '/p:Platform=Win32',
@@ -39,7 +39,7 @@ def main():
     # aambLibcpp-win32 (actually AnyCPU)
     args = [
         msbuildexe,
-        'AmbLibcpp.2013.sln',
+        'AmbLibcpp.sln',
         '/t:AmbLibcpp',
         '/p:Configuration=Release',
         '/p:Platform=Win32',

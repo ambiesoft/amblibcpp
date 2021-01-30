@@ -70,7 +70,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AmbLibcpp.platform\AmbLibcpp.2013.vcxproj">
+    <ProjectReference Include="..\AmbLibcpp.platform\AmbLibcpp.vcxproj">
       <Project>{87f0ce21-9ca6-448a-ace8-b7fc9771dc87}</Project>
       <Name>AmbLibcpp.platform</Name>
       <Private>False</Private>

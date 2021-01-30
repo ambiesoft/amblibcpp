@@ -1,3 +1,6 @@
+2021/01/30 ver2.0.1
+to VS2019
+
 2021/01/14 ver1.3.3
 Get Debug String
 
