@@ -242,6 +242,7 @@ namespace Ambiesoft {
 			static bool CppUtils::OpenCommon(System::Windows::Forms::IWin32Window^ win, String^ exe, String^ command);
 			static String^ CppUtils::getWindowDebugString(IntPtr winptr);
 			static String^ CppUtils::getWindowDebugString(System::Windows::Forms::IWin32Window^ win);
+			static bool IsCtrlPressed();
 		};
 
 

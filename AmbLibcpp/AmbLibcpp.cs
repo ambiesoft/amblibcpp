@@ -435,6 +435,10 @@ namespace Ambiesoft
         {
             return platform.CppUtils.getWindowDebugString(win);
         }
+        public static bool IsCtrlPressed()
+        {
+            return platform.CppUtils.IsCtrlPressed();
+        }
     }
 
     public class CenteringDialog : IDisposable

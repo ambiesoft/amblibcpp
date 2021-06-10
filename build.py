@@ -6,19 +6,23 @@ sys.path.append('../distSolution')
 
 import distSolution
 
-
+# sample
+# devenv "%USERPROFILE%\source\repos\MySolution.sln" /build Debug /project "CSharpWinApp\CSharpWinApp.csproj" /projectconfig Debug
 def main():
-    msbuildexe = distSolution.getMsBuildExe('AmbLibcpp.sln')
-    if not msbuildexe:
+    devenvexe = distSolution.getDevenvExeOrCom('AmbLibcpp.sln', '.com')
+    if not devenvexe:
         errorexit("MSBuild not found.")
 
     # platform-x64
     args = [
-        msbuildexe,
+        devenvexe,
         'AmbLibcpp.sln',
-        '/t:AmbLibcpp_platform',
-        '/p:Configuration=Release',
-        '/p:Platform=x64',
+        '/build',
+        'Release|x64',
+        '/project',
+        R'AmbLibcpp.platform\AmbLibcppPlatform.vcxproj',
+        '/projectconfig',
+        'Release|x64',
     ]
     print(args)
     subprocess.check_call(args)
@@ -26,23 +30,29 @@ def main():
 
     # platform-win32
     args = [
-        msbuildexe,
+        devenvexe,
         'AmbLibcpp.sln',
-        '/t:AmbLibcpp_platform',
-        '/p:Configuration=Release',
-        '/p:Platform=Win32',
+        '/build',
+        'Release|Win32',
+        '/project',
+        R'AmbLibcpp.platform\AmbLibcppPlatform.vcxproj',
+        '/projectconfig',
+        'Release|Win32',
     ]
     print(args)
     subprocess.check_call(args)
 
 
-    # aambLibcpp-win32 (actually AnyCPU)
+    # aambLibcpp-AnyCPU (actually AnyCPU)
     args = [
-        msbuildexe,
+        devenvexe,
         'AmbLibcpp.sln',
-        '/t:AmbLibcpp',
-        '/p:Configuration=Release',
-        '/p:Platform=Win32',
+        '/build',
+        'Release|Win32',
+        '/project',
+        R'AmbLibcpp\AmbLibcpp.csproj',
+        '/projectconfig',
+        'Release|Any CPU',
     ]
     print(args)
     subprocess.check_call(args)

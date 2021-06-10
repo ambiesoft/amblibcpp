@@ -175,7 +175,7 @@ namespace Ambiesoft {
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(src);
 			pin_ptr<const wchar_t> pDest = PtrToStringChars(dest);
 
-			return SHCopyFile(win ? (HWND)win->Handle.ToPointer() : NULL, pDest, pSrc);
+			return SHCopyFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, pSrc, pDest);
 		}
 		int CppUtils::CopyFile(String^ src, String^ dest)
 		{
@@ -184,7 +184,7 @@ namespace Ambiesoft {
 		int CppUtils::DeleteFile(System::Windows::Forms::IWin32Window^ win, String^ file)
 		{
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(file);
-			return SHDeleteFile(win ? (HWND)win->Handle.ToPointer() : NULL, pSrc);
+			return SHDeleteFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, pSrc);
 		}
 		int CppUtils::DeleteFile(String^ file)
 		{
@@ -195,7 +195,7 @@ namespace Ambiesoft {
 			pin_ptr<const wchar_t> pSrc = PtrToStringChars(src);
 			pin_ptr<const wchar_t> pDest = PtrToStringChars(dest);
 
-			return SHMoveFile(win ? (HWND)win->Handle.ToPointer() : NULL, pDest, pSrc);
+			return SHMoveFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, pSrc, pDest);
 		}
 		int CppUtils::MoveFile(String^ src, String^ dest)
 		{
@@ -230,7 +230,7 @@ namespace Ambiesoft {
 			if (!prepareVector(froms, tos, stdFroms, stdTos))
 				return 1;
 
-			return SHCopyFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdTos, stdFroms);
+			return SHCopyFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, stdFroms, stdTos);
 		}
 		int CppUtils::CopyFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
 		{
@@ -243,7 +243,7 @@ namespace Ambiesoft {
 			for each(String^ s in files)
 				stdfiles.push_back(toWstring(s));
 
-			return SHDeleteFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdfiles);
+			return SHDeleteFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, stdfiles);
 		}
 		int CppUtils::DeleteFiles(cli::array<String^>^ files)
 		{
@@ -258,7 +258,7 @@ namespace Ambiesoft {
 			if (!prepareVector(froms, tos, stdFroms, stdTos))
 				return 1;
 
-			return SHMoveFile(win ? (HWND)win->Handle.ToPointer() : NULL, stdTos, stdFroms);
+			return SHMoveFileEx(win ? (HWND)win->Handle.ToPointer() : NULL, stdFroms, stdTos);
 		}
 		int CppUtils::MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos)
 		{
@@ -578,8 +578,8 @@ namespace Ambiesoft {
 				return L"Not a window";
 			
 			
-			LONG style = ::GetWindowLongPtr(h, GWL_STYLE);
-			LONG exstyle = ::GetWindowLongPtr(h, GWL_EXSTYLE);
+			LONG_PTR style = ::GetWindowLongPtr(h, GWL_STYLE);
+			LONG_PTR exstyle = ::GetWindowLongPtr(h, GWL_EXSTYLE);
 
 			return String::Format(L"style={0}, exstyle={1}",
 				style, exstyle);
@@ -587,6 +587,10 @@ namespace Ambiesoft {
 		String^ CppUtils::getWindowDebugString(System::Windows::Forms::IWin32Window^ win)
 		{
 			return getWindowDebugString(win ? win->Handle : (IntPtr)0);
+		}
+		bool CppUtils::IsCtrlPressed()
+		{
+			return GetAsyncKeyState(VK_CONTROL) < 0;
 		}
 	}
 }
