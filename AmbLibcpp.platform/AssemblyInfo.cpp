@@ -17,7 +17,7 @@ using namespace System::Security::Permissions;
 
 //
 
-[assembly:AssemblyVersionAttribute("2.0.2.*")];
+[assembly:AssemblyVersionAttribute("2.0.3.*")];
 
 [assembly:ComVisible(false)];
 

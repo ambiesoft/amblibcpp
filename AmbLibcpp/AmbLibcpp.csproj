@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dist\History.txt" />
+    <Content Include="info\startup of Amblibcpp.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Natives\x64\Ambiesoft.AmbLibcpp.platform.x64.dll" />

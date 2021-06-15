@@ -18,19 +18,6 @@ namespace Ambiesoft
     {
         static Loader()
         {
-            //string[] resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            //string resourceDir = string.Format("{0}.{1}.{2}.",
-            //    typeof(CppUtils).Namespace,
-            //    "Natives",
-            //    Environment.Is64BitProcess ? "x64" : "x86");
-            //foreach (string native in resourceNames)
-            //{
-            //    if (!native.StartsWith(resourceDir))
-            //        continue;
-
-            //    string filename = native.Substring(resourceDir.Length);
-            //    EmbeddedAssembly.Load(native, filename);
-            //}
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
         }
         static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

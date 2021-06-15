@@ -1,0 +1,11 @@
+startup of Amblibcpp
+
+1. User app calls Ambiesoft.CppUtils.xxxx()
+2. C# lib Amblibcpp's static ctor Loader() is called
+3. Loader set AppDomain.CurrentDomain.AssemblyResolve event
+4. 
+5. C# lib Amblibcpp's static ctor CppUtils() is called
+6. 1's method is not called yet
+7. if 1's call actually needs code to run it calls the event handler of 3
+8. Event handler loads native dlls determined by the host environment(x86 or x64)
+9. Write native asm embedded in dll into a temp file and loads it
