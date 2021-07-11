@@ -26,9 +26,7 @@ namespace AmbLibcppTest {
 		Form1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: ここにコンストラクタ コードを追加します
-			//
+			DVERIFY(CppUtils::MakeRichEditFontPersist(richText));
 		}
 
 	protected:
@@ -55,6 +53,8 @@ namespace AmbLibcppTest {
 	private: System::Windows::Forms::Button^  btnColorNormal;
 	private: System::Windows::Forms::Button^  btnCreateDesktopShortcut;
 	private: System::Windows::Forms::Button^  btnNazo;
+	private: System::Windows::Forms::RichTextBox^ richText;
+
 
 
 	private:
@@ -81,13 +81,14 @@ namespace AmbLibcppTest {
 			this->btnColorNormal = (gcnew System::Windows::Forms::Button());
 			this->btnCreateDesktopShortcut = (gcnew System::Windows::Forms::Button());
 			this->btnNazo = (gcnew System::Windows::Forms::Button());
+			this->richText = (gcnew System::Windows::Forms::RichTextBox());
 			this->SuspendLayout();
 			// 
 			// btnWithNullptr
 			// 
 			this->btnWithNullptr->Location = System::Drawing::Point(0, 0);
 			this->btnWithNullptr->Name = L"btnWithNullptr";
-			this->btnWithNullptr->Size = System::Drawing::Size(75, 25);
+			this->btnWithNullptr->Size = System::Drawing::Size(75, 23);
 			this->btnWithNullptr->TabIndex = 0;
 			this->btnWithNullptr->Text = L"with nullptr";
 			this->btnWithNullptr->UseVisualStyleBackColor = true;
@@ -95,9 +96,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnWithActiveForm
 			// 
-			this->btnWithActiveForm->Location = System::Drawing::Point(0, 31);
+			this->btnWithActiveForm->Location = System::Drawing::Point(0, 29);
 			this->btnWithActiveForm->Name = L"btnWithActiveForm";
-			this->btnWithActiveForm->Size = System::Drawing::Size(75, 25);
+			this->btnWithActiveForm->Size = System::Drawing::Size(75, 23);
 			this->btnWithActiveForm->TabIndex = 1;
 			this->btnWithActiveForm->Text = L"with ActiveForm";
 			this->btnWithActiveForm->UseVisualStyleBackColor = true;
@@ -105,9 +106,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnWithThis
 			// 
-			this->btnWithThis->Location = System::Drawing::Point(0, 63);
+			this->btnWithThis->Location = System::Drawing::Point(0, 58);
 			this->btnWithThis->Name = L"btnWithThis";
-			this->btnWithThis->Size = System::Drawing::Size(75, 25);
+			this->btnWithThis->Size = System::Drawing::Size(75, 23);
 			this->btnWithThis->TabIndex = 2;
 			this->btnWithThis->Text = L"with this";
 			this->btnWithThis->UseVisualStyleBackColor = true;
@@ -117,7 +118,7 @@ namespace AmbLibcppTest {
 			// 
 			this->btnFolderNormal->Location = System::Drawing::Point(91, 0);
 			this->btnFolderNormal->Name = L"btnFolderNormal";
-			this->btnFolderNormal->Size = System::Drawing::Size(123, 25);
+			this->btnFolderNormal->Size = System::Drawing::Size(123, 23);
 			this->btnFolderNormal->TabIndex = 3;
 			this->btnFolderNormal->Text = L"folder normal";
 			this->btnFolderNormal->UseVisualStyleBackColor = true;
@@ -125,9 +126,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnFolderCentering
 			// 
-			this->btnFolderCentering->Location = System::Drawing::Point(91, 31);
+			this->btnFolderCentering->Location = System::Drawing::Point(91, 29);
 			this->btnFolderCentering->Name = L"btnFolderCentering";
-			this->btnFolderCentering->Size = System::Drawing::Size(123, 25);
+			this->btnFolderCentering->Size = System::Drawing::Size(123, 23);
 			this->btnFolderCentering->TabIndex = 4;
 			this->btnFolderCentering->Text = L"folder centering";
 			this->btnFolderCentering->UseVisualStyleBackColor = true;
@@ -135,9 +136,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnlsMiscFolder
 			// 
-			this->btnlsMiscFolder->Location = System::Drawing::Point(91, 63);
+			this->btnlsMiscFolder->Location = System::Drawing::Point(91, 58);
 			this->btnlsMiscFolder->Name = L"btnlsMiscFolder";
-			this->btnlsMiscFolder->Size = System::Drawing::Size(123, 25);
+			this->btnlsMiscFolder->Size = System::Drawing::Size(123, 23);
 			this->btnlsMiscFolder->TabIndex = 5;
 			this->btnlsMiscFolder->Text = L"folder lsMisc";
 			this->btnlsMiscFolder->UseVisualStyleBackColor = true;
@@ -145,9 +146,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnColorCentering
 			// 
-			this->btnColorCentering->Location = System::Drawing::Point(91, 123);
+			this->btnColorCentering->Location = System::Drawing::Point(91, 114);
 			this->btnColorCentering->Name = L"btnColorCentering";
-			this->btnColorCentering->Size = System::Drawing::Size(123, 23);
+			this->btnColorCentering->Size = System::Drawing::Size(123, 21);
 			this->btnColorCentering->TabIndex = 6;
 			this->btnColorCentering->Text = L"&color Centering";
 			this->btnColorCentering->UseVisualStyleBackColor = true;
@@ -155,9 +156,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnOtherTest
 			// 
-			this->btnOtherTest->Location = System::Drawing::Point(0, 197);
+			this->btnOtherTest->Location = System::Drawing::Point(0, 182);
 			this->btnOtherTest->Name = L"btnOtherTest";
-			this->btnOtherTest->Size = System::Drawing::Size(75, 23);
+			this->btnOtherTest->Size = System::Drawing::Size(75, 21);
 			this->btnOtherTest->TabIndex = 7;
 			this->btnOtherTest->Text = L"&OtherTest";
 			this->btnOtherTest->UseVisualStyleBackColor = true;
@@ -165,9 +166,9 @@ namespace AmbLibcppTest {
 			// 
 			// btnColorNormal
 			// 
-			this->btnColorNormal->Location = System::Drawing::Point(91, 94);
+			this->btnColorNormal->Location = System::Drawing::Point(91, 87);
 			this->btnColorNormal->Name = L"btnColorNormal";
-			this->btnColorNormal->Size = System::Drawing::Size(123, 23);
+			this->btnColorNormal->Size = System::Drawing::Size(123, 21);
 			this->btnColorNormal->TabIndex = 6;
 			this->btnColorNormal->Text = L"&color Normal";
 			this->btnColorNormal->UseVisualStyleBackColor = true;
@@ -177,7 +178,7 @@ namespace AmbLibcppTest {
 			// 
 			this->btnCreateDesktopShortcut->Location = System::Drawing::Point(229, 0);
 			this->btnCreateDesktopShortcut->Name = L"btnCreateDesktopShortcut";
-			this->btnCreateDesktopShortcut->Size = System::Drawing::Size(135, 23);
+			this->btnCreateDesktopShortcut->Size = System::Drawing::Size(135, 21);
 			this->btnCreateDesktopShortcut->TabIndex = 8;
 			this->btnCreateDesktopShortcut->Text = L"CreateDesktopShortcut";
 			this->btnCreateDesktopShortcut->UseVisualStyleBackColor = true;
@@ -185,19 +186,28 @@ namespace AmbLibcppTest {
 			// 
 			// btnNazo
 			// 
-			this->btnNazo->Location = System::Drawing::Point(91, 197);
+			this->btnNazo->Location = System::Drawing::Point(91, 182);
 			this->btnNazo->Name = L"btnNazo";
-			this->btnNazo->Size = System::Drawing::Size(75, 23);
+			this->btnNazo->Size = System::Drawing::Size(75, 21);
 			this->btnNazo->TabIndex = 9;
 			this->btnNazo->Text = L"Nazo";
 			this->btnNazo->UseVisualStyleBackColor = true;
 			this->btnNazo->Click += gcnew System::EventHandler(this, &Form1::btnNazo_Click);
 			// 
+			// richText
+			// 
+			this->richText->Location = System::Drawing::Point(327, 88);
+			this->richText->Name = L"richText";
+			this->richText->Size = System::Drawing::Size(167, 96);
+			this->richText->TabIndex = 10;
+			this->richText->Text = L"I am rich";
+			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(516, 328);
+			this->ClientSize = System::Drawing::Size(516, 303);
+			this->Controls->Add(this->richText);
 			this->Controls->Add(this->btnNazo);
 			this->Controls->Add(this->btnCreateDesktopShortcut);
 			this->Controls->Add(this->btnOtherTest);
@@ -218,6 +228,7 @@ namespace AmbLibcppTest {
 #pragma endregion
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 		Ambiesoft::CppUtils::moveWindowSpecific(this, Ambiesoft::CPPUTIL_MOVEWINDOWTYPE::BOTTOMLEFT);
+		DVERIFY(CppUtils::MakeRichEditFontPersist(richText));
 	}
 	private: System::Void btnWithNullptr_Click(System::Object^  sender, System::EventArgs^  e) {
 		CppUtils::CenteredMessageBox("nullptr");

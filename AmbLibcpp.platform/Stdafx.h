@@ -23,22 +23,23 @@
 
 #pragma once
 
-
 #include <windows.h>
 #include <Shlwapi.h>
+#include <Richedit.h>
 
 #include <tchar.h>
 #include <vcclr.h>
 
-
-
 #include <string>
-// #include <stlsoft/smartptr/scoped_handle.hpp>
-
 
 #include "../../lsMisc/DebugMacro.h"
 #include "../../lsMisc/SHMoveFile.h"
 #include "../../lsMisc/cppclr/clrString.h"
 #include "../../lsMisc/CenterWindow.h"
-
+#include "../../lsMisc/browseFolder.h"
+#include "../../lsMisc/OpenCommon.h"
+#include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/CreateShortcutFile.h"
+#include "../../lsMisc/stdwin32/stdwin32.h"
+#include "../../lsMisc/CHandle.h"
 

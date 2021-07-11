@@ -243,6 +243,8 @@ namespace Ambiesoft {
 			static String^ CppUtils::getWindowDebugString(IntPtr winptr);
 			static String^ CppUtils::getWindowDebugString(System::Windows::Forms::IWin32Window^ win);
 			static bool IsCtrlPressed();
+
+			static bool MakeRichEditFontPersist(System::Windows::Forms::RichTextBox^ richTextBox);
 		};
 
 

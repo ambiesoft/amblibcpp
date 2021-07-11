@@ -1,3 +1,6 @@
+2021/07/11 ver2.0.4
+Add MakeRichEditFontPersist(richText)
+
 2021/06/15 ver2.0.3
 Tries to find all existing dlls from temp folder
 

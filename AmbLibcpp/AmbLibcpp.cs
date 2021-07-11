@@ -426,6 +426,10 @@ namespace Ambiesoft
         {
             return platform.CppUtils.IsCtrlPressed();
         }
+        public static bool MakeRichEditFontPersist(System.Windows.Forms.RichTextBox richTextBox)
+        {
+            return platform.CppUtils.MakeRichEditFontPersist(richTextBox);
+        }
     }
 
     public class CenteringDialog : IDisposable

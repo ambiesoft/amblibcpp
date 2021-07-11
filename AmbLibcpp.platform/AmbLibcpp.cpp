@@ -22,13 +22,7 @@
 //SUCH DAMAGE.
 
 #include "stdafx.h"
-#include "../../lsMisc/CenterWindow.h"
-#include "../../lsMisc/browseFolder.h"
-#include "../../lsMisc/OpenCommon.h"
-#include "../../lsMisc/GetVersionString.h"
-#include "../../lsMisc/CreateShortcutFile.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
-#include "../../lsMisc/CHandle.h"
+
 
 #include "AmbLibcpp.h"
 
@@ -591,6 +585,15 @@ namespace Ambiesoft {
 		bool CppUtils::IsCtrlPressed()
 		{
 			return GetAsyncKeyState(VK_CONTROL) < 0;
+		}
+		bool CppUtils::MakeRichEditFontPersist(System::Windows::Forms::RichTextBox^ richTextBox)
+		{
+			DASSERT(richTextBox);
+			DASSERT(richTextBox->IsHandleCreated);
+			DASSERT(!richTextBox->IsDisposed);
+			LPARAM lParam = SendMessage((HWND)richTextBox->Handle.ToPointer(), EM_GETLANGOPTIONS, 0, 0);
+			lParam &= ~(IMF_DUALFONT | IMF_AUTOFONT);
+			return 1==SendMessage((HWND)richTextBox->Handle.ToPointer(), EM_SETLANGOPTIONS, 0, lParam);
 		}
 	}
 }
