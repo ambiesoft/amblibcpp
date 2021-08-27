@@ -400,6 +400,10 @@ namespace Ambiesoft
         {
             return platform.CppUtils.GetNativeVersionString(filename);
         }
+        public static string GetNativeVersionString(string filename, int keta)
+        {
+            return platform.CppUtils.GetNativeVersionString(filename, keta);
+        }
 
         public static bool AmbSetProcessDPIAware()
         {

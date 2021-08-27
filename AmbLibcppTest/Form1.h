@@ -308,7 +308,7 @@ namespace AmbLibcppTest {
 		CppUtils::CreateDesktopShortcut(this, "myshortcut file", Application::ExecutablePath);
 	}
 	private: System::Void btnNazo_Click(System::Object^  sender, System::EventArgs^  e) {
-		String^ ver = CppUtils::GetNativeVersionString(Application::ExecutablePath);
+		String^ ver = CppUtils::GetNativeVersionString(Application::ExecutablePath, 3);
 		{
 			CenteringDialog center(nullptr);
 		}

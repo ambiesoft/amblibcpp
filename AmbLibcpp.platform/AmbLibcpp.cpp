@@ -519,13 +519,16 @@ namespace Ambiesoft {
 			return gcnew String(cshortname.c_str());
 		}
 
-		String^ CppUtils::GetNativeVersionString(String^ filename)
+		String^ CppUtils::GetNativeVersionString(String^ filename, int keta)
 		{
 			wstring s = toWstring(filename);
-			s = Ambiesoft::GetVersionString(s.c_str());
+			s = Ambiesoft::GetVersionString(s.c_str(), keta);
 			return gcnew String(s.c_str());
 		}
-
+		String^ CppUtils::GetNativeVersionString(String^ filename)
+		{
+			return GetNativeVersionString(filename, -1);
+		}
 		// http://www.rw-designer.com/DPI-aware
 		bool CppUtils::AmbSetProcessDPIAware()
 		{
