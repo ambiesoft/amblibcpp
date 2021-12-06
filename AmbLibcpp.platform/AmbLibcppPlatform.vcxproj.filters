@@ -47,6 +47,9 @@
     <ClCompile Include="..\..\lsMisc\CreateShortcutFile.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lsMisc\NTFSTransaction.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
@@ -80,6 +83,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\CreateShortcutFile.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\NTFSTransaction.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

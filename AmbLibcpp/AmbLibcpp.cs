@@ -130,6 +130,11 @@ namespace Ambiesoft
             return DeleteFiles(null, files);
         }
 
+        public static bool MoveFileAtomic(List<KeyValuePair<string, string>> srcdests)
+        {
+            return platform.CppUtils.MoveFileAtomic(srcdests);
+        }
+
         public static bool WriteAlternate(string filename, string alterpath, byte[] data)
         {
             return platform.CppUtils.WriteAlternate(filename, alterpath, data);

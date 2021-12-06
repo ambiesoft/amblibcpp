@@ -23,7 +23,6 @@
 
 #include "stdafx.h"
 
-
 #include "AmbLibcpp.h"
 
 using std::vector;
@@ -259,7 +258,15 @@ namespace Ambiesoft {
 			return MoveFiles(nullptr, froms, tos);
 		}
 
-
+		bool CppUtils::MoveFileAtomic(System::Collections::Generic::List<System::Collections::Generic::KeyValuePair<String^, String^>>^ srcdests)
+		{
+			SRCDESTVECTOR v;
+			for each (System::Collections::Generic::KeyValuePair<String^, String^> kv in srcdests)
+			{
+				v.push_back(SRCDEST(toWstring(kv.Key), toWstring(kv.Value)));
+			}
+			return Ambiesoft::MoveFileAtomic(v);
+		}
 
 		bool CppUtils::WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data)
 		{
@@ -270,7 +277,7 @@ namespace Ambiesoft {
 			stdfile += L":" + toWstring(alterpath);
 			pin_ptr<unsigned char > pData = &data[0];
 
-			CHandle file(CreateFile(stdfile.c_str(),
+			CFileHandle file(CreateFile(stdfile.c_str(),
 				GENERIC_WRITE,
 				FILE_SHARE_WRITE,
 				NULL,
@@ -297,7 +304,7 @@ namespace Ambiesoft {
 			stdfile += L":" + toWstring(alterpath);
 
 
-			CHandle file(CreateFile(stdfile.c_str(),
+			CFileHandle file(CreateFile(stdfile.c_str(),
 				GENERIC_READ,
 				FILE_SHARE_READ,
 				NULL,

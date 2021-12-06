@@ -83,6 +83,7 @@ namespace Ambiesoft {
 			static int MoveFiles(System::Windows::Forms::IWin32Window^ win, cli::array<String^>^ froms, cli::array<String^>^ tos);
 			static int MoveFiles(cli::array<String^>^ froms, cli::array<String^>^ tos);
 
+			static bool MoveFileAtomic(System::Collections::Generic::List<System::Collections::Generic::KeyValuePair<String^, String^>>^ srcdests);
 
 			static bool WriteAlternate(String^ filename, String^ alterpath, array<unsigned char>^ data);
 			static bool ReadAlternate(String^ filename, String^ alterpath, array<unsigned char>^% data);
