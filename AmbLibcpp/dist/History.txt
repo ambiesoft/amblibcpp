@@ -1,3 +1,6 @@
+2023/04/23 ver3.0.1
+Updated to .NET4.5.2
+
 2021/12/06 ver2.0.6
 Added: MoveFileAtomic
 

@@ -40,7 +40,7 @@
 #include "../../lsMisc/OpenCommon.h"
 #include "../../lsMisc/GetVersionString.h"
 #include "../../lsMisc/CreateShortcutFile.h"
-#include "../../lsMisc/stdwin32/stdwin32.h"
 #include "../../lsMisc/CHandle.h"
 #include "../../lsMisc/NTFSTransaction.h"
+#include "../../lsMisc/GetShortPath.h"
 

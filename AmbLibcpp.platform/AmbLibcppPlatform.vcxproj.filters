@@ -38,9 +38,6 @@
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\stdwin32\stdwin32.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\NTFSTransaction.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetShortPath.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,6 +86,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\NTFSTransaction.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetShortPath.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

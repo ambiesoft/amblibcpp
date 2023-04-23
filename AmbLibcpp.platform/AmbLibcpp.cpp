@@ -521,8 +521,7 @@ namespace Ambiesoft {
 		String^ CppUtils::GetShortFileName(String^ longname)
 		{
 			wstring clongname = toWstring(longname);
-			// return gcnew String(stdwin32::stdGetFirstLine(L"aaa").c_str());
-			wstring cshortname = stdwin32::stdGetShortPath(clongname);
+			wstring cshortname = stdGetShortPath(clongname);
 			return gcnew String(cshortname.c_str());
 		}
 
