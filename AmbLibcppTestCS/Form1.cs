@@ -214,5 +214,11 @@ namespace AmbLibcppTestCS
             }
 
         }
+
+        private void btnOpenSelectedFile_Click(object sender, EventArgs e)
+        {
+            CppUtils.OpenFolder(this,
+                Application.ExecutablePath);
+        }
     }
 }

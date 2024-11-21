@@ -1,3 +1,6 @@
+2024/11/21 ver4.0.1
+Updated to .NET4.6.2
+
 2023/04/23 ver3.0.1
 Updated to .NET4.5.2
 

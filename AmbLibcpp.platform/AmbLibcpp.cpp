@@ -528,7 +528,7 @@ namespace Ambiesoft {
 		String^ CppUtils::GetNativeVersionString(String^ filename, int keta)
 		{
 			wstring s = toWstring(filename);
-			s = Ambiesoft::GetVersionString(s.c_str(), keta);
+			s = Ambiesoft::GetVersionStringFromResource(s.c_str(), keta);
 			return gcnew String(s.c_str());
 		}
 		String^ CppUtils::GetNativeVersionString(String^ filename)

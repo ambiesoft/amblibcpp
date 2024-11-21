@@ -38,7 +38,7 @@
 #include "../../lsMisc/CenterWindow.h"
 #include "../../lsMisc/browseFolder.h"
 #include "../../lsMisc/OpenCommon.h"
-#include "../../lsMisc/GetVersionString.h"
+#include "../../lsMisc/GetVersionStringFromResource.h"
 #include "../../lsMisc/CreateShortcutFile.h"
 #include "../../lsMisc/CHandle.h"
 #include "../../lsMisc/NTFSTransaction.h"

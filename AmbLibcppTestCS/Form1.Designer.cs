@@ -36,13 +36,14 @@
             this.txtInitialDir = new System.Windows.Forms.TextBox();
             this.btnSelectFolder = new System.Windows.Forms.Button();
             this.btnTestMove = new System.Windows.Forms.Button();
+            this.btnOpenSelectedFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNull
             // 
-            this.btnNull.Location = new System.Drawing.Point(35, 25);
+            this.btnNull.Location = new System.Drawing.Point(35, 27);
             this.btnNull.Name = "btnNull";
-            this.btnNull.Size = new System.Drawing.Size(75, 23);
+            this.btnNull.Size = new System.Drawing.Size(75, 25);
             this.btnNull.TabIndex = 0;
             this.btnNull.Text = "null";
             this.btnNull.UseVisualStyleBackColor = true;
@@ -50,9 +51,9 @@
             // 
             // btnPractical
             // 
-            this.btnPractical.Location = new System.Drawing.Point(35, 70);
+            this.btnPractical.Location = new System.Drawing.Point(35, 76);
             this.btnPractical.Name = "btnPractical";
-            this.btnPractical.Size = new System.Drawing.Size(75, 23);
+            this.btnPractical.Size = new System.Drawing.Size(75, 25);
             this.btnPractical.TabIndex = 1;
             this.btnPractical.Text = "Practical";
             this.btnPractical.UseVisualStyleBackColor = true;
@@ -60,9 +61,9 @@
             // 
             // btnTestCopy
             // 
-            this.btnTestCopy.Location = new System.Drawing.Point(35, 151);
+            this.btnTestCopy.Location = new System.Drawing.Point(35, 164);
             this.btnTestCopy.Name = "btnTestCopy";
-            this.btnTestCopy.Size = new System.Drawing.Size(75, 21);
+            this.btnTestCopy.Size = new System.Drawing.Size(75, 23);
             this.btnTestCopy.TabIndex = 2;
             this.btnTestCopy.Text = "Test Copy";
             this.btnTestCopy.UseVisualStyleBackColor = true;
@@ -70,9 +71,9 @@
             // 
             // btnOpenFolder
             // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(35, 203);
+            this.btnOpenFolder.Location = new System.Drawing.Point(35, 220);
             this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(126, 21);
+            this.btnOpenFolder.Size = new System.Drawing.Size(126, 23);
             this.btnOpenFolder.TabIndex = 3;
             this.btnOpenFolder.Text = "Open C-T";
             this.btnOpenFolder.UseVisualStyleBackColor = true;
@@ -80,9 +81,9 @@
             // 
             // btnNativeVersion
             // 
-            this.btnNativeVersion.Location = new System.Drawing.Point(225, 25);
+            this.btnNativeVersion.Location = new System.Drawing.Point(225, 27);
             this.btnNativeVersion.Name = "btnNativeVersion";
-            this.btnNativeVersion.Size = new System.Drawing.Size(75, 21);
+            this.btnNativeVersion.Size = new System.Drawing.Size(75, 23);
             this.btnNativeVersion.TabIndex = 4;
             this.btnNativeVersion.Text = "native vertion";
             this.btnNativeVersion.UseVisualStyleBackColor = true;
@@ -90,16 +91,16 @@
             // 
             // txtInitialDir
             // 
-            this.txtInitialDir.Location = new System.Drawing.Point(371, 191);
+            this.txtInitialDir.Location = new System.Drawing.Point(371, 207);
             this.txtInitialDir.Name = "txtInitialDir";
-            this.txtInitialDir.Size = new System.Drawing.Size(229, 19);
+            this.txtInitialDir.Size = new System.Drawing.Size(229, 20);
             this.txtInitialDir.TabIndex = 5;
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(371, 215);
+            this.btnSelectFolder.Location = new System.Drawing.Point(371, 233);
             this.btnSelectFolder.Name = "btnSelectFolder";
-            this.btnSelectFolder.Size = new System.Drawing.Size(229, 21);
+            this.btnSelectFolder.Size = new System.Drawing.Size(229, 23);
             this.btnSelectFolder.TabIndex = 6;
             this.btnSelectFolder.Text = "&Select Folder...";
             this.btnSelectFolder.UseVisualStyleBackColor = true;
@@ -107,19 +108,30 @@
             // 
             // btnTestMove
             // 
-            this.btnTestMove.Location = new System.Drawing.Point(116, 151);
+            this.btnTestMove.Location = new System.Drawing.Point(116, 164);
             this.btnTestMove.Name = "btnTestMove";
-            this.btnTestMove.Size = new System.Drawing.Size(75, 23);
+            this.btnTestMove.Size = new System.Drawing.Size(75, 25);
             this.btnTestMove.TabIndex = 7;
             this.btnTestMove.Text = "Test Move";
             this.btnTestMove.UseVisualStyleBackColor = true;
             this.btnTestMove.Click += new System.EventHandler(this.btnTestMove_Click);
             // 
+            // btnOpenSelectedFile
+            // 
+            this.btnOpenSelectedFile.Location = new System.Drawing.Point(280, 78);
+            this.btnOpenSelectedFile.Name = "btnOpenSelectedFile";
+            this.btnOpenSelectedFile.Size = new System.Drawing.Size(218, 23);
+            this.btnOpenSelectedFile.TabIndex = 8;
+            this.btnOpenSelectedFile.Text = "Open Selected File";
+            this.btnOpenSelectedFile.UseVisualStyleBackColor = true;
+            this.btnOpenSelectedFile.Click += new System.EventHandler(this.btnOpenSelectedFile_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 256);
+            this.ClientSize = new System.Drawing.Size(636, 277);
+            this.Controls.Add(this.btnOpenSelectedFile);
             this.Controls.Add(this.btnTestMove);
             this.Controls.Add(this.btnSelectFolder);
             this.Controls.Add(this.txtInitialDir);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.TextBox txtInitialDir;
         private System.Windows.Forms.Button btnSelectFolder;
         private System.Windows.Forms.Button btnTestMove;
+        private System.Windows.Forms.Button btnOpenSelectedFile;
     }
 }
 

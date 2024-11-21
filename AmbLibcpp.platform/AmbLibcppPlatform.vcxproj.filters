@@ -38,9 +38,6 @@
     <ClCompile Include="..\..\lsMisc\OpenCommon.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lsMisc\GetVersionString.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lsMisc\CreateShortcutFile.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lsMisc\GetShortPath.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lsMisc\GetVersionStringFromResource.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -79,9 +79,6 @@
     <ClInclude Include="..\..\lsMisc\stdwin32\stdwin32.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lsMisc\GetVersionString.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\lsMisc\CreateShortcutFile.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -89,6 +86,9 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lsMisc\GetShortPath.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lsMisc\GetVersionStringFromResource.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
